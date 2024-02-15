@@ -2,7 +2,7 @@ import pygame
 import sys
 import math
 from button import Button
-
+from movement import set_direction
 pygame.init()
 
 SCREEN_WIDTH = 1280
@@ -11,12 +11,17 @@ SCREEN = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
 pygame.display.set_caption("Menu")
 
 BG = pygame.image.load("assets/Background.jpg")
-
+BGP = pygame.image.load("assets/BackgroundPlay.png")
 class Character(pygame.sprite.Sprite):
-    def __init__(self, image, pos):
+    def __init__(self, images, pos):
         super().__init__()
-        self.original_image = pygame.image.load(image)
-        self.image = self.original_image.copy()
+        if isinstance(images, str):  # Check if a single image file path is provided
+            self.original_images = [pygame.image.load(images)]
+        else:
+            self.original_images = images
+        self.index = 0
+        self.original_image = self.original_images[self.index]
+        self.image = self.original_image.copy() if isinstance(self.original_image, pygame.Surface) else self.original_image
         self.rect = self.image.get_rect(center=pos)
         self.angle = 0
 
@@ -24,22 +29,36 @@ class Character(pygame.sprite.Sprite):
         self.image = pygame.transform.rotate(self.original_image, self.angle)
         self.rect = self.image.get_rect(center=self.rect.center)
 
-    def update_angle(self, mouse_pos):
-        dx = mouse_pos[0] - self.rect.centerx
-        dy = mouse_pos[1] - self.rect.centery
-        self.angle = (180 / math.pi) * -math.atan2(dy, dx)
+
+    def set_direction(self, direction):
+        if direction == "up":
+            self.index = 0
+        elif direction == "down":
+            self.index = 1
+        elif direction == "left":
+            self.index = 2
+        elif direction == "right":
+            self.index = 3
+
+character_images = [
+    pygame.image.load("assets/CharacterFront.png"),
+    pygame.image.load("assets/CharacterBack.png"),
+    pygame.image.load("assets/CharacterLeft.png"),
+    pygame.image.load("assets/CharacterRight.png")
+]
+character = Character("assets/CharacterFront.png", (640, 360))
 
 def get_font(size):
     return pygame.font.Font("assets/Retro Gaming.ttf", size)
 
 def play():
-    character = Character("assets/CharacterFront.png", (SCREEN_WIDTH // 2, SCREEN_HEIGHT // 2))
+    # Instantiate the Character class with the list of images
+    character = Character(character_images, (SCREEN_WIDTH // 2, SCREEN_HEIGHT // 2))
 
     while True:
-        SCREEN.fill((192, 192, 192))
+        SCREEN.blit(BGP, (0, 0))
         PLAY_MOUSE_POS = pygame.mouse.get_pos()
 
-        character.update_angle(PLAY_MOUSE_POS)
         character.update()
         SCREEN.blit(character.image, character.rect)
 
@@ -77,9 +96,12 @@ def main_menu():
 
         SCREEN.blit(MENU_TEXT, MENU_RECT)
 
-        character.update_angle(MENU_MOUSE_POS)
+
         character.update()
         SCREEN.blit(character.image, character.rect)
+
+        keys = pygame.key.get_pressed()  # Get pressed keys
+        set_direction(character, keys)  # Call set_direction function
 
         for button in [PLAY_BUTTON, QUIT_BUTTON]:
             button.changeColor(MENU_MOUSE_POS)
