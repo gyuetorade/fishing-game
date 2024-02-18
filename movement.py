@@ -2,10 +2,14 @@ import pygame
 
 def set_direction(character, keys):
     if keys[pygame.K_UP]:
-        character.index = 0  # Set direction to up
+        character.set_direction("up")
+        character.rect.y -= 10  # Adjust the movement speed as needed
     elif keys[pygame.K_DOWN]:
-        character.index = 1  # Set direction to down
+        character.set_direction("down")
+        character.rect.y += 10  # Adjust the movement speed as needed
     elif keys[pygame.K_LEFT]:
-        character.index = 2  # Set direction to left
+        character.set_direction("left")
+        character.rect.x -= 10  # Adjust the movement speed as needed
     elif keys[pygame.K_RIGHT]:
-        character.index = 3  # Set direction to right
+        character.set_direction("right")
+        character.rect.x += 10  # Adjust the movement speed as needed
