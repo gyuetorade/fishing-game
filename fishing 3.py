@@ -16,14 +16,15 @@ BGP = pygame.image.load(r"assets\Map\BackgroundPlay.png")
 button_image_path = r"assets\Button\Button_Play.png"
 
 character_images = [
-    pygame.image.load(r"assets\Character\CharacterBack.PNG"),
+    pygame.image.load(r"assets/Character/BrownniCK.png"),
     pygame.image.load(r"assets\Character\CharacterFront.PNG"),
     pygame.image.load(r"assets\Character\CharacterLeft.PNG"),
     pygame.image.load(r"assets\Character\CharacterRight.PNG")
+
 ]
 
 def get_font(size):
-    return pygame.font.Font(r"assets\Font\Retro Gaming.ttf", size)
+    return pygame.font.Font(r"assets/Font/Daydream.ttf", size)
 
 
 class Game:
@@ -95,7 +96,7 @@ def main_menu():
 
         MENU_MOUSE_POS = pygame.mouse.get_pos()
 
-        MENU_TEXT = get_font(100).render("Life Under the Sea", True, (255, 255, 255))
+        MENU_TEXT = get_font(75).render("Life Under the Sea", True, (100, 200, 50))
 
         PLAY_BUTTON = Button(r"assets\Button\Button_Play.png", (SCREEN_WIDTH // 2, 450), "White", "Green")
 
