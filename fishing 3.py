@@ -55,7 +55,6 @@ class Game:
             keys = pygame.key.get_pressed()
             self.character.set_direction(keys, self.path_mask)  # Pass the collision mask to set_direction
 
-            print(f"Character Rect (play): {self.character.rect}")
 
             self.check_collision()  # Check for collision after updating the character's position
 
@@ -78,21 +77,12 @@ class Game:
         # Use the character's mask and path mask for the overlap check
         overlap = self.path_mask.overlap(character_mask, offset)
 
-        print(f"Character Rect: {self.character.rect}")
-        print(f"Character Mask Rect: {self.character.mask.get_rect(center=self.character.rect.center)}")
-        print(f"Overlap: {overlap}")
 
         # Draw the character's and path mask on the screen for debugging
         SCREEN.blit(pygame.Surface(self.character.rect.size, pygame.SRCALPHA), self.character.rect)
         SCREEN.blit(pygame.Surface(self.path_mask.get_rect().size, pygame.SRCALPHA), self.path_mask.get_rect())
 
-        if overlap:
-            # Collision detected, handle accordingly
-            print("Collision detected!")
-            # You can implement actions like stopping the character, showing a message, etc.
-        else:
-            # No collision, continue normal movement
-            pass
+        pass
 
         pygame.display.update()
 
