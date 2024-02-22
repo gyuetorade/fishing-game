@@ -4,6 +4,7 @@ from button import Button
 from movement import set_direction
 from character import Character
 from collision import maskcollision
+
 pygame.init()
 
 SCREEN_WIDTH = 1280
@@ -40,7 +41,7 @@ class Game:
             self.character.update()
             SCREEN.blit(self.character.image, self.character.rect)
 
-            PLAY_BACK = Button(r"assets\Button\Button_Menu.png", (50, 50), "White", "Green")
+            PLAY_BACK = Button(r"assets\Button\Button_Menu.png", (50, 50))
 
             PLAY_BACK.changeColor(PLAY_MOUSE_POS)
             PLAY_BACK.update(SCREEN)
@@ -67,7 +68,6 @@ class Game:
     def display(self):
         self.character.update()
         SCREEN.blit(self.character.image, self.character.rect)
-
 
     def check_collision(self):
         character_mask = pygame.mask.from_surface(self.character.image)
@@ -98,9 +98,9 @@ def main_menu():
 
         MENU_TEXT = get_font(75).render("Life Under the Sea", True, (100, 200, 50))
 
-        PLAY_BUTTON = Button(r"assets\Button\Button_Play.png", (SCREEN_WIDTH // 2, 450), "White", "Green")
+        PLAY_BUTTON = Button(r"assets\Button\Button_Play.png", (SCREEN_WIDTH // 2, 450))
 
-        QUIT_BUTTON = Button(r"assets\Button\Button_Quit.png", (SCREEN_WIDTH // 2, 550), "White", "Green")
+        QUIT_BUTTON = Button(r"assets\Button\Button_Quit.png", (SCREEN_WIDTH // 2, 550))
 
         SCREEN.blit(MENU_TEXT, (50, 100))
 
