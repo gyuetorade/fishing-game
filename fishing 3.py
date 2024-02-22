@@ -16,7 +16,7 @@ BGP = pygame.image.load(r"assets\Map\BackgroundPlay.png")
 button_image_path = r"assets\Button\Button_Play.png"
 
 character_images = [
-    pygame.image.load(r"assets/Character/BrownniCK.png"),
+    pygame.image.load(r"assets/Character/BROWN NI CK.png.png"),
     pygame.image.load(r"assets\Character\CharacterFront.PNG"),
     pygame.image.load(r"assets\Character\CharacterLeft.PNG"),
     pygame.image.load(r"assets\Character\CharacterRight.PNG")
