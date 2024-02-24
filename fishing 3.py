@@ -32,6 +32,7 @@ class Game:
     def __init__(self):
         self.character = Character(character_images, (870, 420), scale=0.53)
         self.path_mask = maskcollision(r"assets/Map/mask.png")
+        self.buttons_on_screen = []
 
     def play(self):
         while True:
@@ -80,7 +81,7 @@ class Game:
 
 
         # Draw the character's and path mask on the screen for debugging
-        SCREEN.blit(pygame.Surface(self.character.rect.size, pygame.SRCALPHA), self.character.rect)
+        SCREEN.blit(p   ygame.Surface(self.character.rect.size, pygame.SRCALPHA), self.character.rect)
         SCREEN.blit(pygame.Surface(self.path_mask.get_rect().size, pygame.SRCALPHA), self.path_mask.get_rect())
 
         pass
