@@ -31,9 +31,13 @@ class Game:
     def __init__(self):
         self.character = Character(character_images, (870, 420), scale=0.53)
         self.path_mask = maskcollision(r"assets/Map/mask.png")
+        self.fishing_mask = maskcollision(r"assets/Map/fishingmask.png")
         self.buttons_on_screen = []
+        self.is_fishing_overlap = False  # Flag to track fishing mask overlap
 
     def play(self):
+        fishing_button = Button(r"assets/Button/Button_Fish.png", (751, 100))
+
         while True:
             SCREEN.blit(BGP, (0, 0))
             PLAY_MOUSE_POS = pygame.mouse.get_pos()
@@ -44,44 +48,59 @@ class Game:
             PLAY_BACK = Button(r"assets\Button\Button_Menu.png", (50, 50))
             PLAY_BACK.update(SCREEN)
 
+            path_overlap = self.check_collision(self.path_mask)
+            fishing_overlap = self.check_collision(self.fishing_mask)
+
+            if fishing_overlap:
+                fishing_button.update(SCREEN)
+
+                # Handle mouse events
+                for event in pygame.event.get():
+                    if event.type == pygame.QUIT:
+                        pygame.quit()
+                        sys.exit()
+
+                    if event.type == pygame.MOUSEBUTTONDOWN:
+                        # Check if the fishing button is clicked
+                        if fishing_button.checkForInput(PLAY_MOUSE_POS):
+                            print("Button Clicked!")
+
+            # Handle mouse events
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
                     pygame.quit()
                     sys.exit()
+
                 if event.type == pygame.MOUSEBUTTONDOWN:
                     if PLAY_BACK.checkForInput(PLAY_MOUSE_POS):
                         return  # Return from the play function to go back to the main menu
 
+            # Update character direction and check collision with the path mask
             keys = pygame.key.get_pressed()
-            self.character.set_direction(keys, self.path_mask)  # Pass the collision mask to set_direction
-            self.check_collision()  # Check for collision after updating the character's position
+            self.character.set_direction(keys, self.path_mask)
+            self.check_collision(self.path_mask)
 
             pygame.display.update()
-    def update(self):
-        keys = pygame.key.get_pressed()  # Get pressed keys
-        set_direction(self.character, keys)  # Call set_direction function
 
     def display(self):
         self.character.update()
         SCREEN.blit(self.character.image, self.character.rect)
 
-    def check_collision(self):
+    def check_collision(self, collision_mask):
         character_mask = pygame.mask.from_surface(self.character.image)
 
-        # Calculate the offset based on the character's rect and path mask's rect
-        offset = (self.character.rect.x - self.path_mask.get_rect().x, self.character.rect.y - self.path_mask.get_rect().y)
+        # Calculate the offset based on the character's rect and the collision mask's rect
+        offset = (
+        self.character.rect.x - collision_mask.get_rect().x, self.character.rect.y - collision_mask.get_rect().y)
 
-        # Use the character's mask and path mask for the overlap check
-        overlap = self.path_mask.overlap(character_mask, offset)
+        # Use the character's mask and the collision mask for the overlap check
+        overlap = bool(collision_mask.overlap(character_mask, offset))
 
-
-        # Draw the character's and path mask on the screen for debugging
+        # Draw the character's and the collision mask on the screen for debugging
         SCREEN.blit(pygame.Surface(self.character.rect.size, pygame.SRCALPHA), self.character.rect)
-        SCREEN.blit(pygame.Surface(self.path_mask.get_rect().size, pygame.SRCALPHA), self.path_mask.get_rect())
+        SCREEN.blit(pygame.Surface(collision_mask.get_rect().size, pygame.SRCALPHA), collision_mask.get_rect())
 
-        pass
-
-        pygame.display.update()
+        return overlap
 
 def main_menu():
     in_game = False  # New variable to track whether the player is in the game

@@ -2,6 +2,7 @@ import pygame
 
 class Button():
     def __init__(self, image_path, pos):
+        self.image_path = image_path  # Store the image path as an instance variable
         self.image = pygame.image.load(image_path)
         self.x_pos, self.y_pos = pos
         if self.image is None:
