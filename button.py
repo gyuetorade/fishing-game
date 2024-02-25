@@ -16,12 +16,3 @@ class Button():
         if position[0] in range(self.rect.left, self.rect.right) and position[1] in range(self.rect.top, self.rect.bottom):
             return True
         return False
-
-    def changeColor(self, position):
-        # No need for base_color and hovering_color
-        if position[0] in range(self.rect.left, self.rect.right) and position[1] in range(self.rect.top, self.rect.bottom):
-            # Handle color change logic here
-            pass
-        else:
-            # Handle color change logic here
-            pass

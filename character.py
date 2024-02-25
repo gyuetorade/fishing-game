@@ -1,7 +1,7 @@
 import pygame
 
 class Character(pygame.sprite.Sprite):
-    def __init__(self, images, pos, scale, speed=5):
+    def __init__(self, images, pos, scale, speed=7):
         super().__init__()
 
         self.angle = 0
@@ -48,16 +48,16 @@ class Character(pygame.sprite.Sprite):
     def set_direction(self, keys, collision_mask):
         new_rect = self.rect.copy()  # Create a copy of the current rect
 
-        if keys[pygame.K_UP]:
+        if keys[pygame.K_UP] or keys[pygame.K_w]:
             new_rect.y -= self.speed
             self.index = 0
-        elif keys[pygame.K_DOWN]:
+        elif keys[pygame.K_DOWN] or keys[pygame.K_s]:
             new_rect.y += self.speed
             self.index = 1
-        elif keys[pygame.K_LEFT]:
+        elif keys[pygame.K_LEFT] or keys[pygame.K_a]:
             new_rect.x -= self.speed
             self.index = 2
-        elif keys[pygame.K_RIGHT]:
+        elif keys[pygame.K_RIGHT] or keys[pygame.K_d]:
             new_rect.x += self.speed
             self.index = 3
 
