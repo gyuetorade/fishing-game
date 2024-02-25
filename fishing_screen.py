@@ -33,6 +33,9 @@ def fishing_screen():
     dots = ""
     start_time = pygame.time.get_ticks()  # Record the start time
 
+    # Generate a random fish path outside the loop
+    fish_path = get_random_fish()
+
     while True:
         SCREEN.blit(FISHING_BG, (0, 0))
         FISHING_MOUSE_POS = pygame.mouse.get_pos()
@@ -49,7 +52,6 @@ def fishing_screen():
             if len(dots) > 3:
                 dots = ""  # Reset dots after reaching three
         else:
-            fish_path = get_random_fish()
             fish_image = pygame.image.load(fish_path)
             fish_rect = fish_image.get_rect(center=(SCREEN_WIDTH // 2, SCREEN_HEIGHT // 2 - 50))  # Adjust position
 
