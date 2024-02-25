@@ -42,13 +42,13 @@ def fishing_screen():
         elapsed_time = pygame.time.get_ticks() - start_time
 
         if elapsed_time < 3000:  # Display "Fishing" for the first 3 seconds
-            draw_text(SCREEN, f"{fishing_text}{dots}", font, (255, 255, 255), Rect(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT),
+            draw_text(SCREEN, f"{fishing_text}{dots}", font, (255, 255, 255), Rect(690, 660, 0, 0),
                       "center")
             dots += "."  # Add a dot to the animation
             if len(dots) > 3:
                 dots = ""  # Reset dots after reaching three
         else:
-            draw_text(SCREEN, "Fish Caught", font, (255, 255, 255), Rect(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT), "center")
+            draw_text(SCREEN, "Fish Caught", font, (255, 255, 255), Rect(690, 100, 0, 0), "center")
 
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
