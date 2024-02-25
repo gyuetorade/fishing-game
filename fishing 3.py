@@ -32,6 +32,8 @@ class Game:
         self.character = Character(character_images, (870, 420), scale=0.53)
         self.path_mask = maskcollision(r"assets/Map/mask.png")
         self.buttons_on_screen = []
+        self.fishing_mask = maskcollision(r"assets/Map/fishingmask.png")
+        self.fishing_button = Button(r"assets/Button/Button_Fish.png", (1000, 240))
 
     def play(self):
         while True:
@@ -41,7 +43,7 @@ class Game:
             self.character.update()
             SCREEN.blit(self.character.image, self.character.rect)
 
-            PLAY_BACK = Button(r"assets\Button\Button_Menu.png", (50, 50))
+            PLAY_BACK = Button(r"assets\Button\Button_Back.png", (50, 50))
             PLAY_BACK.update(SCREEN)
 
             for event in pygame.event.get():
@@ -51,15 +53,16 @@ class Game:
                 if event.type == pygame.MOUSEBUTTONDOWN:
                     if PLAY_BACK.checkForInput(PLAY_MOUSE_POS):
                         return  # Return from the play function to go back to the main menu
+                    # Check if the fishing button is clicked
+                    FISHING_BUTTON = Button(r"assets/Button/Button_Fish.png", (1000, 240))  # Adjust the path and position
+                    if FISHING_BUTTON.checkForInput(PLAY_MOUSE_POS):
+                        print("Fishing button clicked!")  # Add your fishing logic here
 
             keys = pygame.key.get_pressed()
             self.character.set_direction(keys, self.path_mask)  # Pass the collision mask to set_direction
             self.check_collision()  # Check for collision after updating the character's position
 
             pygame.display.update()
-    def update(self):
-        keys = pygame.key.get_pressed()  # Get pressed keys
-        set_direction(self.character, keys)  # Call set_direction function
 
     def display(self):
         self.character.update()
@@ -68,18 +71,22 @@ class Game:
     def check_collision(self):
         character_mask = pygame.mask.from_surface(self.character.image)
 
-        # Calculate the offset based on the character's rect and path mask's rect
-        offset = (self.character.rect.x - self.path_mask.get_rect().x, self.character.rect.y - self.path_mask.get_rect().y)
+        # Calculate the offset based on the character's rect and fishing mask's rect
+        character_offset = (
+        self.character.rect.x - self.fishing_mask.get_rect().x, self.character.rect.y - self.fishing_mask.get_rect().y)
 
-        # Use the character's mask and path mask for the overlap check
-        overlap = self.path_mask.overlap(character_mask, offset)
+        # Use the character's mask and fishing mask for the overlap check
+        character_overlap = self.fishing_mask.overlap(character_mask, character_offset)
 
+        # If there's a collision, display the fishing button
+        if character_overlap:
+            # Draw the fishing button on the screen
+            FISHING_BUTTON = Button(r"assets/Button/Button_Fish.png", (1000, 240))  # Adjust the path and position
+            SCREEN.blit(FISHING_BUTTON.image, FISHING_BUTTON.rect)
 
-        # Draw the character's and path mask on the screen for debugging
+        # Draw the character's and fishing mask on the screen for debugging
         SCREEN.blit(pygame.Surface(self.character.rect.size, pygame.SRCALPHA), self.character.rect)
-        SCREEN.blit(pygame.Surface(self.path_mask.get_rect().size, pygame.SRCALPHA), self.path_mask.get_rect())
-
-        pass
+        SCREEN.blit(pygame.Surface(self.fishing_mask.get_rect().size, pygame.SRCALPHA), self.fishing_mask.get_rect())
 
         pygame.display.update()
 

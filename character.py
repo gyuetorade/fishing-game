@@ -44,7 +44,7 @@ class Character(pygame.sprite.Sprite):
         # Update self.mask after rotating
         self.mask = pygame.mask.from_surface(self.image)
 
-    def set_direction(self, keys,collision_mask):
+    def set_direction(self, keys, collision_mask):
         new_rect = self.rect.copy()  # Create a copy of the current rect
 
         if keys[pygame.K_UP] or keys[pygame.K_w]:
