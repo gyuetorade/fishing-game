@@ -2,6 +2,7 @@ import pygame
 import sys
 from button import Button
 from pygame.locals import Rect
+from fishies import get_random_fish
 
 pygame.init()
 
@@ -11,7 +12,6 @@ SCREEN = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
 pygame.display.set_caption("Fishing Screen")
 
 FISHING_BG = pygame.image.load(r"assets/Map/FishingScreenBackground.png")  # Adjust the path
-
 
 def draw_text(surface, text, font, color, rect, align="center"):
     # Helper function to draw centered text on a surface
@@ -24,6 +24,7 @@ def draw_text(surface, text, font, color, rect, align="center"):
     # Add more cases for other alignment options if needed
 
     surface.blit(text_surface, text_rect)
+
 def fishing_screen():
     clock = pygame.time.Clock()
     font = pygame.font.Font(r"assets/Font/Daydream.ttf", 54)  # Adjust the path and size
@@ -42,13 +43,18 @@ def fishing_screen():
         elapsed_time = pygame.time.get_ticks() - start_time
 
         if elapsed_time < 3000:  # Display "Fishing" for the first 3 seconds
-            draw_text(SCREEN, f"{fishing_text}{dots}", font, (255, 255, 255), Rect(690, 660, 0, 0),
+            draw_text(SCREEN, f"{fishing_text}{dots}", font, (255, 255, 255), Rect(SCREEN_WIDTH // 2, SCREEN_HEIGHT // 2, 0, 0),
                       "center")
             dots += "."  # Add a dot to the animation
             if len(dots) > 3:
                 dots = ""  # Reset dots after reaching three
         else:
-            draw_text(SCREEN, "Fish Caught", font, (255, 255, 255), Rect(690, 100, 0, 0), "center")
+            fish_path = get_random_fish()
+            fish_image = pygame.image.load(fish_path)
+            fish_rect = fish_image.get_rect(center=(SCREEN_WIDTH // 2, SCREEN_HEIGHT // 2 - 50))  # Adjust position
+
+            SCREEN.blit(fish_image, fish_rect)
+            draw_text(SCREEN, "Fish Caught", font, (255, 255, 255), Rect(SCREEN_WIDTH // 2, SCREEN_HEIGHT // 2 + 100, 0, 0), "center")
 
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
