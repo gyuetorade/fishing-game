@@ -10,12 +10,15 @@ fish = {
     'Octopus': 'assets/Fish/Fishes/Octapus.PNG',
     'Orangeroughy': 'assets/Fish/Fishes/Orangeroughy.png',
     'Seahorse': 'assets/Fish/Fishes/Seahorse.png',
+    'Seal': 'assets/FIsh/Fishes/Seal.png',
     'Shark': 'assets/Fish/Fishes/Shark.png',
     'Small tail shark': 'assets/Fish/Fishes/Small tail shark.png',
     'Squid': 'assets/Fish/Fishes/Squid.png',
     'Starfish': 'assets/Fish/Fishes/Starfish.PNG',
     'Stingray': 'assets/Fish/Fishes/Stingray.png',
     'Stingray with friends': 'assets/Fish/Fishes/Stingray with friends.png',
+    'Sunfish': 'assets/FIsh/Fishes/Sunfish.png',
+    'Turtle': 'assets/FIsh/Fishes/Turtle.png',
     'Tuna': 'assets/Fish/Fishes/Tuna.png',
 }
 def get_random_fish():
