@@ -13,7 +13,7 @@ SCREEN_HEIGHT = 720
 SCREEN = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
 pygame.display.set_caption("Fishing Screen")
 
-FISHING_BG = pygame.image.load(r"assets/Map/FishingScreenBackground.png")  # Adjust the path
+FISHING_BG = pygame.image.load(r"assets/Map/BackgroundFishing.png")  # Adjust the path
 TEXTBOX_IMAGE = pygame.image.load(r"assets/Others/textbox.png")  # Adjust the path
 
 def draw_text(surface, text, font, color, rect, align="center", max_width=None, max_height=None):
@@ -57,7 +57,7 @@ def draw_text(surface, text, font, color, rect, align="center", max_width=None, 
 
 def fishing_screen():
     clock = pygame.time.Clock()
-    font = pygame.font.Font(r"assets/Font/Daydream.ttf", 56)  # Adjust the path and size
+    font = pygame.font.Font(r"assets/Font/Daydream.ttf", 76)  # Adjust the path and size
     textbox_font = pygame.font.Font(r"assets/Font/Daydream.ttf", 14)
     fishing_text = "Fishing"
     dots = ""
@@ -65,9 +65,7 @@ def fishing_screen():
 
     # Generate a random fish path and description outside the loop
     fish_path = get_random_fish()
-    fish_description = ("This is a random fish description."
-                        " It might be a very long description that needs to be word-wrapped "
-                        "to fit inside the textbox image without errors.")
+    fish_description = ("This is a random fish description. It might be a very long description that needs to be word-wrapped to fit inside the textbox image without errors.")
 
     # Create two example buttons
     catch = Button(r"assets/Button/Button_Catch.png", (150, 600))  # Adjust the path and position
@@ -95,8 +93,8 @@ def fishing_screen():
             fish_rect = fish_image.get_rect(center=(320, 250))  # Adjust position
 
             SCREEN.blit(fish_image, fish_rect)
-            draw_text(SCREEN, "Fish Caught", font, (255, 255, 255),
-                      Rect(690, 690, 0, 0), "center")
+            draw_text(SCREEN, "Fish Caught", font, (222, 180, 118),
+                      Rect(690, 75, 0, 0), "center")
             # Display the text box image
             textbox_rect = TEXTBOX_IMAGE.get_rect(center=(320, 600))
             SCREEN.blit(TEXTBOX_IMAGE, textbox_rect)
