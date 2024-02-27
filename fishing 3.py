@@ -52,7 +52,7 @@ def draw_text_with_outline(surface, text, font, color, rect, align="center", out
     surface.blit(text_surface, text_rect)
 
 def main_menu():
-    in_game = False  # New variable to track whether the player is in the game
+    in_game = False
 
     while True:
         SCREEN.blit(BG, (0, 0))
@@ -73,21 +73,21 @@ def main_menu():
                 sys.exit()
             if event.type == pygame.MOUSEBUTTONDOWN:
                 if PLAY_BUTTON.checkForInput(MENU_MOUSE_POS):
-                    in_game = True  # Set in_game to True when PLAY is pressed
-
+                    in_game = True
                 if QUIT_BUTTON.checkForInput(MENU_MOUSE_POS):
                     pygame.quit()
                     sys.exit()
 
-        pygame.display.update()
+        pygame.display.update()  # Remove this line from here
 
         if in_game:
             game = Game()
             while in_game:
                 game.play()
-                in_game = False  # Reset in_game when returning from play to the main menu
+                in_game = False
 
         pygame.display.update()
+
 
 
 class Game:

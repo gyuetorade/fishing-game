@@ -52,6 +52,16 @@ def draw_text(surface, text, font, color, rect, align="center", max_width=None, 
     for line in lines:
         text_surface = font.render(line, True, color)
         text_rect = text_surface.get_rect(centerx=rect.centerx, y=y)
+
+        # Create an outline surface
+        outline_surface = font.render(line, True, (0, 0, 0))
+        outline_rect = outline_surface.get_rect(centerx=rect.centerx, y=y)
+
+        # Blit the outline surface multiple times to create the outline effect
+        for offset in [(-1, 0), (1, 0), (0, -1), (0, 1)]:
+            surface.blit(outline_surface, (outline_rect.x + offset[0], outline_rect.y + offset[1]))
+
+        # Blit the actual text surface
         surface.blit(text_surface, text_rect)
         y += current_line_height
 
@@ -65,11 +75,11 @@ def fishing_screen():
 
     # Generate a random fish path and description outside the loop
     fish_path = get_random_fish()
-    fish_description = ("This is a random fish description. It might be a very long description that needs to be word-wrapped to fit inside the textbox image without errors.")
+    fish_description = ("Crabs are Scuttlers of the sea and land! These ten-legged creatures with hard shells live in oceans, tidal zones, even freshwater, and even land in the tropics! They use their strong claws to grab food and fight.")
 
     # Create two example buttons
-    catch = Button(r"assets/Button/Button_Catch.png", (150, 600))  # Adjust the path and position
-    release = Button(r"assets/Button/Button_Release.png", (450, 600))  # Adjust the path and position
+    catch = Button(r"assets/Button/Button_Catch.png", (1100, 560))  # Adjust the path and position
+    release = Button(r"assets/Button/Button_Release.png", (1100, 650))  # Adjust the path and position
 
     while True:
         SCREEN.blit(FISHING_BG, (0, 0))
@@ -96,11 +106,11 @@ def fishing_screen():
             draw_text(SCREEN, "Fish Caught", font, (222, 180, 118),
                       Rect(690, 75, 0, 0), "center")
             # Display the text box image
-            textbox_rect = TEXTBOX_IMAGE.get_rect(center=(320, 600))
+            textbox_rect = TEXTBOX_IMAGE.get_rect(center=(320, 550))
             SCREEN.blit(TEXTBOX_IMAGE, textbox_rect)
 
             # Display the fish description inside the text box with word wrapping
-            draw_text(SCREEN, fish_description, textbox_font, (255, 255, 255), textbox_rect, "center", max_width=240, max_height=100)
+            draw_text(SCREEN, fish_description, textbox_font, (255, 255, 255), textbox_rect, "center", max_width=520, max_height=500)
 
             # Update and draw the buttons
             catch.update(SCREEN)
