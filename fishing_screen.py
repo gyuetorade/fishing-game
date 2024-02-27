@@ -66,7 +66,7 @@ def draw_text(surface, text, font, color, rect, align="center", max_width=None, 
 
 def fishing_screen():
     clock = pygame.time.Clock()
-    font = pygame.font.Font(r"assets/Font/Daydream.ttf", 86)  # Adjust the path and size
+    font = pygame.font.Font(r"assets/Font/Daydream.ttf", 70)  # Adjust the path and size
     textbox_font = pygame.font.Font(r"assets/Font/Daydream.ttf", 19)
     fishing_text = "Fishing"
     dots = ""
@@ -87,7 +87,7 @@ def fishing_screen():
 
         elapsed_time = pygame.time.get_ticks() - start_time
 
-        if elapsed_time < 3000:  # Display "Fishing" for the first 3 seconds
+        if elapsed_time < 5000:  # Display "Fishing" for the first 3 seconds
             draw_text(SCREEN, f"{fishing_text}{dots}", font, (255, 255, 255),
                       Rect(SCREEN_WIDTH // 2, SCREEN_HEIGHT // 2, 0, 0),
                       "center")
@@ -108,7 +108,7 @@ def fishing_screen():
 
             # Display the fish description inside the text box with word wrapping
             draw_text(SCREEN, fish_description, textbox_font, (255, 255, 255), textbox_rect, "center", max_width=500,
-                      max_height=100, outline_color=(0, 0, 0), outline_width=2)
+                      max_height=100, outline_color=(0, 0, 0), outline_width=0)
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 pygame.quit()

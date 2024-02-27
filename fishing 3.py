@@ -4,6 +4,7 @@ from button import Button
 from character import Character
 from collision import maskcollision
 from fishing_screen import fishing_screen
+from pygame.locals import Rect
 
 pygame.init()
 
@@ -21,25 +22,47 @@ character_images = [
     pygame.image.load(r"assets\Character\CharacterFront.PNG"),
     pygame.image.load(r"assets\Character\CharacterLeft.PNG"),
     pygame.image.load(r"assets\Character\CharacterRight.PNG")
-
 ]
 
 def get_font(size):
     return pygame.font.Font(r"assets/Font/Daydream.ttf", size)
 
+def draw_text_with_outline(surface, text, font, color, rect, align="center", outline_color=(0, 0, 0), outline_width=2):
+    # Helper function to draw text with an outline on a surface
+    text_surface = font.render(text, True, color)
+    outline_surface = font.render(text, True, outline_color)
+
+    if align == "center":
+        text_rect = text_surface.get_rect(center=rect.center)
+        outline_rect = outline_surface.get_rect(center=rect.center)
+    elif align == "topleft":
+        text_rect = text_surface.get_rect(topleft=rect.topleft)
+        outline_rect = outline_surface.get_rect(topleft=rect.topleft)
+    # Add more cases for other alignment options if needed
+
+    text_rect.x -= outline_width
+    text_rect.y -= outline_width
+
+    surface.blit(outline_surface, outline_rect)
+    surface.blit(outline_surface, (outline_rect.x - outline_width, outline_rect.y))
+    surface.blit(outline_surface, (outline_rect.x + outline_width, outline_rect.y))
+    surface.blit(outline_surface, (outline_rect.x, outline_rect.y - outline_width))
+    surface.blit(outline_surface, (outline_rect.x, outline_rect.y + outline_width))
+
+    surface.blit(text_surface, text_rect)
+
 def main_menu():
     in_game = False  # New variable to track whether the player is in the game
 
     while True:
-
         SCREEN.blit(BG, (0, 0))
 
         MENU_MOUSE_POS = pygame.mouse.get_pos()
-        MENU_TEXT = get_font(75).render("Life Under the Sea", True, (100, 200, 50))
+        MENU_TEXT = get_font(75)
+        draw_text_with_outline(SCREEN, "Life Under the Sea", MENU_TEXT, (100, 200, 50), Rect(50, 100, 0, 0), "topleft")
+
         PLAY_BUTTON = Button(r"assets\Button\Button_Play.png", (SCREEN_WIDTH // 2, 450))
         QUIT_BUTTON = Button(r"assets\Button\Button_Quit.png", (SCREEN_WIDTH // 2, 550))
-
-        SCREEN.blit(MENU_TEXT, (50, 100))
 
         for button in [PLAY_BUTTON, QUIT_BUTTON]:
             button.update(SCREEN)
@@ -72,7 +95,7 @@ class Game:
         self.path_mask = maskcollision(r"assets/Map/mask.png")
         self.buttons_on_screen = []
         self.fishing_mask = maskcollision(r"assets/Map/fishingmask.png")
-        self.fishing_button = Button(r"assets/Button/Button_Fish.png", (1000, 240))
+        self.fishing_button = Button(r"assets/Button/Button_Fish.png", (1000, 100))
 
     def play(self):
         while True:
@@ -119,7 +142,7 @@ class Game:
         # If there's a collision, display the fishing button
         if character_overlap:
             # Draw the fishing button on the screen
-            FISHING_BUTTON = Button(r"assets/Button/Button_Fish.png", (1000, 240))  # Adjust the path and position
+            FISHING_BUTTON = Button(r"assets/Button/Button_Fish.png", (1000, 100))  # Adjust the path and position
             SCREEN.blit(FISHING_BUTTON.image, FISHING_BUTTON.rect)
 
         # Draw the character's and fishing mask on the screen for debugging

@@ -77,48 +77,42 @@ class Game:
         self.fishing_start_time = 0
         self.show_fish_caught_text = False
 
+        self.fishing_button = Button(r"assets/Button/Button_Fish.png", (751, 100))
+        self.back_button = Button(r"assets/Button/Button_Back.png", (50, 50))
+        self.fish_caught_font = get_font(36)
+
     def play(self):
         fishing_screen = FishingScreen()
-        fishing_button = Button(r"assets/Button/Button_Fish.png", (751, 100))
-        back_button = Button(r"assets/Button/Button_Back.png", (50, 50))
-        fish_caught_font = get_font(36)
 
         while True:
-
             SCREEN.blit(BGP, (0, 0))
             PLAY_MOUSE_POS = pygame.mouse.get_pos()
-
+            self.fishing_button.update(SCREEN)
             self.character.update()
             SCREEN.blit(self.character.image, self.character.rect)
 
-            back_button.update(SCREEN)
+            self.back_button.update(SCREEN)
 
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
                     pygame.quit()
                     sys.exit()
 
-            PLAY_MOUSE_POS = pygame.mouse.get_pos()
 
-            # Update character direction and check collision with the path mask
             keys = pygame.key.get_pressed()
             self.character.set_direction(keys, self.path_mask)
             path_overlap = self.check_collision(self.path_mask)
-
             fishing_overlap = self.check_collision(self.fishing_mask)
 
-            # Draw fishing background
             SCREEN.blit(fishing_screen.background, (0, 0))
-
-            # Draw character
             self.character.update()
             SCREEN.blit(self.character.image, self.character.rect)
 
             if fishing_overlap and not self.fishing_in_progress:
-                fishing_button.update(SCREEN)
+                self.fishing_button.update(SCREEN)
 
-                if pygame.mouse.get_pressed()[0]:  # Check if left mouse button is pressed
-                    if fishing_button.checkForInput(PLAY_MOUSE_POS):
+                if pygame.mouse.get_pressed()[0]:
+                    if self.fishing_button.checkForInput(PLAY_MOUSE_POS):
                         self.fishing_in_progress = True
                         self.fishing_start_time = time.time()
 
@@ -126,25 +120,16 @@ class Game:
                 fishing_screen.display()
 
                 if time.time() - self.fishing_start_time >= 1:
-                    # Reset fishing_in_progress and set show_fish_caught_text flag
                     self.fishing_in_progress = False
                     self.show_fish_caught_text = True
 
             if self.show_fish_caught_text:
-                # Draw "Fish Caught!" text
-                fish_caught_text = fish_caught_font.render("Fish Caught!", True, (255, 255, 255))
+                fish_caught_text = self.fish_caught_font.render("Fish Caught!", True, (255, 255, 255))
                 fish_caught_rect = fish_caught_text.get_rect(center=(SCREEN_WIDTH // 2, SCREEN_HEIGHT // 1))
                 SCREEN.blit(fish_caught_text, fish_caught_rect)
 
-                # Draw back button
-                back_button.update(SCREEN)
-
-                # Handle back button press
-                if back_button.checkForInput(PLAY_MOUSE_POS):
-                    self.show_fish_caught_text = False  # Reset the flag when back button is pressed
 
             pygame.display.update()
-
 
     def display(self):
         self.character.update()
@@ -152,19 +137,13 @@ class Game:
 
     def check_collision(self, collision_mask):
         character_mask = pygame.mask.from_surface(self.character.image)
-
-        # Calculate the offset based on the character's rect and the collision mask's rect
         offset = (
         self.character.rect.x - collision_mask.get_rect().x, self.character.rect.y - collision_mask.get_rect().y)
-
-        # Use the character's mask and the collision mask for the overlap check
         overlap = bool(collision_mask.overlap(character_mask, offset))
-
-        # Draw the character's and the collision mask on the screen for debugging
         SCREEN.blit(pygame.Surface(self.character.rect.size, pygame.SRCALPHA), self.character.rect)
         SCREEN.blit(pygame.Surface(collision_mask.get_rect().size, pygame.SRCALPHA), collision_mask.get_rect())
-
         return overlap
+
 class FishingScreen:
     def __init__(self):
         self.background = pygame.image.load(r"assets\Map\FishingScreenBackground.png")
