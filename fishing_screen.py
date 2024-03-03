@@ -80,14 +80,10 @@ def fishing_screen():
     fish_path = get_random_fish()
     fish_description = fish_path['description']
 
-    # Create two example buttons
-    catch = Button(r"assets/Button/Button_Catch.png", (1100, 560))  # Adjust the path and position
-    release = Button(r"assets/Button/Button_Release.png", (1100, 650))  # Adjust the path and position
 
     while True:
         SCREEN.blit(FISHING_BG, (0, 0))
         FISHING_MOUSE_POS = pygame.mouse.get_pos()
-
         FISHING_BACK = Button(r"assets/Button/Button_Back.png", (50, 50))  # Adjust the path and position
         FISHING_BACK.update(SCREEN)
 
@@ -116,6 +112,8 @@ def fishing_screen():
             draw_text(SCREEN, fish_description, textbox_font, (255, 255, 255), textbox_rect, "center", max_width=520,
                       max_height=500)
 
+            catch = Button(r"assets/Button/Button_Catch.png", (1100, 560))  # Adjust the path and position
+            release = Button(r"assets/Button/Button_Release.png", (1100, 650))  # Adjust the path and position
             # Update and draw the buttons
             catch.update(SCREEN)
             release.update(SCREEN)
