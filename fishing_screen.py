@@ -16,8 +16,10 @@ pygame.display.set_caption("Fishing Screen")
 FISHING_BG = pygame.image.load(r"assets/Map/BackgroundFishing.png")  # Adjust the path
 TEXTBOX_IMAGE = pygame.image.load(r"assets/Others/textbox.png")  # Adjust the path
 
+
 def draw_text(surface, text, font, color, rect, align="center", max_width=None, max_height=None):
     # Helper function to draw centered text on a surface with word wrapping
+    global y
     words = text.split(' ')
     space_width, space_height = font.size(' ')
 
@@ -29,7 +31,7 @@ def draw_text(surface, text, font, color, rect, align="center", max_width=None, 
     for word in words:
         word_width, word_height = font.size(word)
         if (max_width is not None and current_line and current_line_width + space_width + word_width > max_width) or \
-           (max_height is not None and current_line_height + word_height > max_height):
+                (max_height is not None and current_line_height + word_height > max_height):
             lines.append(' '.join(current_line))
             current_line = [word]
             current_line_width = word_width
@@ -65,6 +67,7 @@ def draw_text(surface, text, font, color, rect, align="center", max_width=None, 
         surface.blit(text_surface, text_rect)
         y += current_line_height
 
+
 def fishing_screen():
     clock = pygame.time.Clock()
     font = pygame.font.Font(r"assets/Font/Daydream.ttf", 76)  # Adjust the path and size
@@ -75,7 +78,7 @@ def fishing_screen():
 
     # Generate a random fish path and description outside the loop
     fish_path = get_random_fish()
-    fish_description = ("Crabs are Scuttlers of the sea and land! These ten-legged creatures with hard shells live in oceans, tidal zones, even freshwater, and even land in the tropics! They use their strong claws to grab food and fight.")
+    fish_description = fish_path['description']
 
     # Create two example buttons
     catch = Button(r"assets/Button/Button_Catch.png", (1100, 560))  # Adjust the path and position
@@ -98,7 +101,7 @@ def fishing_screen():
             if len(dots) > 3:
                 dots = ""  # Reset dots after reaching three
         else:
-            fish_image = pygame.image.load(fish_path)
+            fish_image = pygame.image.load(fish_path['image'])
             fish_image = pygame.transform.scale(fish_image, (256, 256))
             fish_rect = fish_image.get_rect(center=(320, 250))  # Adjust position
 
@@ -110,7 +113,8 @@ def fishing_screen():
             SCREEN.blit(TEXTBOX_IMAGE, textbox_rect)
 
             # Display the fish description inside the text box with word wrapping
-            draw_text(SCREEN, fish_description, textbox_font, (255, 255, 255), textbox_rect, "center", max_width=520, max_height=500)
+            draw_text(SCREEN, fish_description, textbox_font, (255, 255, 255), textbox_rect, "center", max_width=520,
+                      max_height=500)
 
             # Update and draw the buttons
             catch.update(SCREEN)

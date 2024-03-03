@@ -24,11 +24,15 @@ character_images = [
     pygame.image.load(r"assets\Character\CharacterRight.PNG")
 ]
 
+
 def get_font(size):
     return pygame.font.Font(r"assets/Font/Daydream.ttf", size)
 
-def draw_text_with_outline(surface, text, font, color, rect, align="center", outline_color=(0, 0, 0), outline_width=2):
+
+def draw_text_with_outline(surface, text, font, color, rect, align="center", outline_color=(0, 0, 0), outline_width=2,
+                           text_rect=None, outline_rect=None):
     # Helper function to draw text with an outline on a surface
+    text_rect, outline_rect
     text_surface = font.render(text, True, color)
     outline_surface = font.render(text, True, outline_color)
 
@@ -51,12 +55,12 @@ def draw_text_with_outline(surface, text, font, color, rect, align="center", out
 
     surface.blit(text_surface, text_rect)
 
+
 def main_menu():
     in_game = False
 
     while True:
         SCREEN.blit(BG, (0, 0))
-
         MENU_MOUSE_POS = pygame.mouse.get_pos()
         MENU_TEXT = get_font(75)
         draw_text_with_outline(SCREEN, "Life Under the Sea", MENU_TEXT, (100, 200, 50), Rect(50, 100, 0, 0), "topleft")
@@ -71,9 +75,9 @@ def main_menu():
             if event.type == pygame.QUIT:
                 pygame.quit()
                 sys.exit()
-            if event.type == pygame.MOUSEBUTTONDOWN:
-                if PLAY_BUTTON.checkForInput(MENU_MOUSE_POS):
-                    in_game = True
+            if event.type == pygame.K_SPACE or event.type == pygame.MOUSEBUTTONDOWN:
+                # if PLAY_BUTTON.checkForInput(MENU_MOUSE_POS):
+                in_game = True
                 if QUIT_BUTTON.checkForInput(MENU_MOUSE_POS):
                     pygame.quit()
                     sys.exit()
@@ -87,7 +91,6 @@ def main_menu():
                 in_game = False
 
         pygame.display.update()
-
 
 
 class Game:
@@ -114,7 +117,7 @@ class Game:
                     pygame.quit()
                     sys.exit()
                 if event.type == pygame.MOUSEBUTTONDOWN:
-                    if PLAY_BACK.checkForInput(PLAY_MOUSE_POS):
+                    if PLAY_BACK.checkForInput(PLAY_MOUSE_POS) or event.type == pygame.K_SPACE:
                         return  # Return from the play function to go back to the main menu
                     if self.fishing_button.checkForInput(PLAY_MOUSE_POS):
                         print("Fishing button clicked!")
@@ -135,7 +138,8 @@ class Game:
 
         # Calculate the offset based on the character's rect and fishing mask's rect
         character_offset = (
-        self.character.rect.x - self.fishing_mask.get_rect().x, self.character.rect.y - self.fishing_mask.get_rect().y)
+            self.character.rect.x - self.fishing_mask.get_rect().x,
+            self.character.rect.y - self.fishing_mask.get_rect().y)
 
         # Use the character's mask and fishing mask for the overlap check
         character_overlap = self.fishing_mask.overlap(character_mask, character_offset)
@@ -151,7 +155,6 @@ class Game:
         SCREEN.blit(pygame.Surface(self.fishing_mask.get_rect().size, pygame.SRCALPHA), self.fishing_mask.get_rect())
 
         pygame.display.update()
-
 
 
 if __name__ == "__main__":
