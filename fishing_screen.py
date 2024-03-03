@@ -138,3 +138,4 @@ def fishing_screen():
 
         pygame.display.update()
         clock.tick(3)  # Adjust the frame rate
+        a
