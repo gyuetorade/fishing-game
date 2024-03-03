@@ -70,4 +70,3 @@ class Character(pygame.sprite.Sprite):
 
         # Update the character's mask after changing position
         self.mask = pygame.mask.from_surface(self.image)
-a
