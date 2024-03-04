@@ -79,7 +79,8 @@ def fishing_screen():
     # Generate a random fish path and description outside the loop
     fish_path = get_random_fish()
     fish_description = fish_path['description']
-
+    fish_name = fish_path['name']
+    fish_status = fish_path['endangered']
 
     while True:
         SCREEN.blit(FISHING_BG, (0, 0))
@@ -104,16 +105,24 @@ def fishing_screen():
             SCREEN.blit(fish_image, fish_rect)
             draw_text(SCREEN, "Fish Caught", font, (222, 180, 118),
                       Rect(690, 75, 0, 0), "center")
+
             # Display the text box image
             textbox_rect = TEXTBOX_IMAGE.get_rect(center=(320, 550))
             SCREEN.blit(TEXTBOX_IMAGE, textbox_rect)
 
-            # Display the fish description inside the text box with word wrapping
-            draw_text(SCREEN, fish_description, textbox_font, (255, 255, 255), textbox_rect, "center", max_width=520,
-                      max_height=500)
+            # textbox content
+            if fish_status:
+                fish_name_description = f"{fish_name}:{fish_description}Status: {fish_status}"
+            else:
+                fish_name_description = f"{fish_name}:{fish_description}"
+
+            # Display the fish name and description inside the text box with word wrapping
+            draw_text(SCREEN, fish_name_description, textbox_font, (255, 255, 255), textbox_rect, "center",
+                      max_width=520, max_height=500)
 
             catch = Button(r"assets/Button/Button_Catch.png", (1100, 560))  # Adjust the path and position
             release = Button(r"assets/Button/Button_Release.png", (1100, 650))  # Adjust the path and position
+
             # Update and draw the buttons
             catch.update(SCREEN)
             release.update(SCREEN)

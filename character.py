@@ -2,7 +2,7 @@ import pygame
 
 
 class Character(pygame.sprite.Sprite):
-    def __init__(self, images, pos, scale, speed=8):
+    def __init__(self, images, pos, scale, speed=5):
         super().__init__()
 
         self.angle = 0
