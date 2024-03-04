@@ -17,32 +17,33 @@ FISHING_BG = pygame.image.load(r"assets/Map/BackgroundFishing.png")  # Adjust th
 TEXTBOX_IMAGE = pygame.image.load(r"assets/Others/textbox.png")  # Adjust the path
 
 
-def draw_text(surface, text, font, color, rect, align="center", max_width=None, max_height=None):
+def draw_text(surface, texts, fonts, colors, rect, align="center", max_width=None, max_height=None):
     # Helper function to draw centered text on a surface with word wrapping
     global y
-    words = text.split(' ')
-    space_width, space_height = font.size(' ')
-
     lines = []
     current_line = []
     current_line_width = 0
     current_line_height = 0
 
-    for word in words:
-        word_width, word_height = font.size(word)
-        if (max_width is not None and current_line and current_line_width + space_width + word_width > max_width) or \
-                (max_height is not None and current_line_height + word_height > max_height):
-            lines.append(' '.join(current_line))
-            current_line = [word]
-            current_line_width = word_width
-            current_line_height = word_height
-        else:
-            current_line.append(word)
-            current_line_width += space_width + word_width
-            current_line_height = max(current_line_height, word_height)
+    for i, text in enumerate(texts):
+        words = text.split(' ')
+        space_width, space_height = fonts[i].size(' ')
 
-    if current_line:
-        lines.append(' '.join(current_line))
+        for word in words:
+            word_width, word_height = fonts[i].size(word)
+            if (max_width is not None and current_line and current_line_width + space_width + word_width > max_width) or \
+                    (max_height is not None and current_line_height + word_height > max_height):
+                lines.append(' '.join(current_line))
+                current_line = [word]
+                current_line_width = word_width
+                current_line_height = word_height
+            else:
+                current_line.append(word)
+                current_line_width += space_width + word_width
+                current_line_height = max(current_line_height, word_height)
+
+        if current_line:
+            lines.append(' '.join(current_line))
 
     total_height = len(lines) * current_line_height
 
@@ -51,12 +52,12 @@ def draw_text(surface, text, font, color, rect, align="center", max_width=None, 
     elif align == "topleft":
         y = rect.y
 
-    for line in lines:
-        text_surface = font.render(line, True, color)
+    for i, line in enumerate(lines):
+        text_surface = fonts[i].render(line, True, colors[i])
         text_rect = text_surface.get_rect(centerx=rect.centerx, y=y)
 
         # Create an outline surface
-        outline_surface = font.render(line, True, (0, 0, 0))
+        outline_surface = fonts[i].render(line, True, (0, 0, 0))
         outline_rect = outline_surface.get_rect(centerx=rect.centerx, y=y)
 
         # Blit the outline surface multiple times to create the outline effect
@@ -67,6 +68,7 @@ def draw_text(surface, text, font, color, rect, align="center", max_width=None, 
         surface.blit(text_surface, text_rect)
         y += current_line_height
 
+    return total_height
 
 def fishing_screen():
     clock = pygame.time.Clock()
@@ -112,16 +114,22 @@ def fishing_screen():
 
             # textbox content
             if fish_status:
-                fish_name_description = f"{fish_name}:{fish_description}Status: {fish_status}"
+                fish_name_description = [fish_name, fish_description, f"Status: {fish_status}"]
+                text_colors = [(255, 255, 255), (255, 255, 255), (255, 255, 255)]
             else:
-                fish_name_description = f"{fish_name}:{fish_description}"
+                fish_name_description = [fish_name, fish_description]
+                text_colors = [(255, 255, 255), (255, 255, 255)]
 
             # Display the fish name and description inside the text box with word wrapping
-            draw_text(SCREEN, fish_name_description, textbox_font, (255, 255, 255), textbox_rect, "center",
-                      max_width=520, max_height=500)
+            total_text_height = draw_text(SCREEN, fish_name_description, [textbox_font] * len(fish_name_description),
+                                          text_colors, textbox_rect, "center", max_width=520, max_height=500)
 
-            catch = Button(r"assets/Button/Button_Catch.png", (1100, 560))  # Adjust the path and position
-            release = Button(r"assets/Button/Button_Release.png", (1100, 650))  # Adjust the path and position
+            # Update the buttons' positions based on the total text height
+            catch_position = (1100, 560 + total_text_height)
+            release_position = (1100, 650 + total_text_height)
+
+            catch = Button(r"assets/Button/Button_Catch.png", catch_position)  # Adjust the path and position
+            release = Button(r"assets/Button/Button_Release.png", release_position)  # Adjust the path and position
 
             # Update and draw the buttons
             catch.update(SCREEN)

@@ -95,7 +95,9 @@ def main_menu():
 
 class Game:
     def __init__(self):
-        self.character = Character(character_images, (870, 420), scale=0.53)
+        #character initial position
+        self.character = Character(character_images, (800, 420))
+
         self.path_mask = maskcollision(r"assets/Map/mask.png")
         self.buttons_on_screen = []
         self.fishing_mask = maskcollision(r"assets/Map/fishingmask.png")
@@ -109,7 +111,7 @@ class Game:
             self.character.update()
             SCREEN.blit(self.character.image, self.character.rect)
 
-            PLAY_BACK = Button(r"assets\Button\Button_Back.png", (50, 50))
+            PLAY_BACK = Button(r"assets\Button\Button_Back.png", (220, 50))
             PLAY_BACK.update(SCREEN)
 
             for event in pygame.event.get():

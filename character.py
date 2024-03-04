@@ -2,11 +2,11 @@ import pygame
 
 
 class Character(pygame.sprite.Sprite):
-    def __init__(self, images, pos, scale, speed=5):
+    def __init__(self, images, pos, speed=5):
         super().__init__()
 
         self.angle = 0
-        self.scale = 0.40
+        self.scale = 0.25
         self.speed = speed
         self.direction = (0, 0)
 
