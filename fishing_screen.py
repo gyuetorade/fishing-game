@@ -53,11 +53,11 @@ def draw_text(surface, texts, fonts, colors, rect, align="center", max_width=Non
         y = rect.y
 
     for i, line in enumerate(lines):
-        text_surface = fonts[i].render(line, True, colors[i])
+        text_surface = fonts[0].render(line, True, colors[0])  # Use fonts[0] and colors[0] for now
         text_rect = text_surface.get_rect(centerx=rect.centerx, y=y)
 
         # Create an outline surface
-        outline_surface = fonts[i].render(line, True, (0, 0, 0))
+        outline_surface = fonts[0].render(line, True, (0, 0, 0))  # Use fonts[0] for now
         outline_rect = outline_surface.get_rect(centerx=rect.centerx, y=y)
 
         # Blit the outline surface multiple times to create the outline effect
@@ -69,6 +69,8 @@ def draw_text(surface, texts, fonts, colors, rect, align="center", max_width=Non
         y += current_line_height
 
     return total_height
+
+
 
 def fishing_screen():
     clock = pygame.time.Clock()
@@ -93,7 +95,7 @@ def fishing_screen():
         elapsed_time = pygame.time.get_ticks() - start_time
 
         if elapsed_time < 3000:  # Display "Fishing" for the first 3 seconds
-            draw_text(SCREEN, f"{fishing_text}{dots}", font, (255, 255, 255),
+            draw_text(SCREEN, [f"{fishing_text}{dots}"], [font], [(255, 255, 255)],
                       Rect(SCREEN_WIDTH // 2, SCREEN_HEIGHT // 2, 0, 0),
                       "center")
             dots += "."  # Add a dot to the animation
@@ -105,7 +107,7 @@ def fishing_screen():
             fish_rect = fish_image.get_rect(center=(320, 250))  # Adjust position
 
             SCREEN.blit(fish_image, fish_rect)
-            draw_text(SCREEN, "Fish Caught", font, (222, 180, 118),
+            draw_text(SCREEN, ["Fish Caught"], [font], [(222, 180, 118)],
                       Rect(690, 75, 0, 0), "center")
 
             # Display the text box image
@@ -114,22 +116,16 @@ def fishing_screen():
 
             # textbox content
             if fish_status:
-                fish_name_description = [fish_name, fish_description, f"Status: {fish_status}"]
-                text_colors = [(255, 255, 255), (255, 255, 255), (255, 255, 255)]
+                fish_name_description = f"{fish_name}:{fish_description} Status: {fish_status}"
             else:
-                fish_name_description = [fish_name, fish_description]
-                text_colors = [(255, 255, 255), (255, 255, 255)]
+                fish_name_description = f"{fish_name}:{fish_description}"
 
             # Display the fish name and description inside the text box with word wrapping
-            total_text_height = draw_text(SCREEN, fish_name_description, [textbox_font] * len(fish_name_description),
-                                          text_colors, textbox_rect, "center", max_width=520, max_height=500)
+            draw_text(SCREEN, [fish_name_description], [textbox_font], [(255, 255, 255)], textbox_rect, "center",
+                      max_width=520, max_height=500)
 
-            # Update the buttons' positions based on the total text height
-            catch_position = (1100, 560 + total_text_height)
-            release_position = (1100, 650 + total_text_height)
-
-            catch = Button(r"assets/Button/Button_Catch.png", catch_position)  # Adjust the path and position
-            release = Button(r"assets/Button/Button_Release.png", release_position)  # Adjust the path and position
+            catch = Button(r"assets/Button/Button_Catch.png", (1100, 560))  # Adjust the  path and position
+            release = Button(r"assets/Button/Button_Release.png", (1100, 650))  # Adjust the path and position
 
             # Update and draw the buttons
             catch.update(SCREEN)

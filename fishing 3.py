@@ -100,7 +100,7 @@ class Game:
 
         self.path_mask = maskcollision(r"assets/Map/mask.png")
         self.buttons_on_screen = []
-        self.fishing_mask = maskcollision(r"assets/Map/fishingmask.png")
+        self.fishing_mask = maskcollision(r"assets/Map/mask.png")
         self.fishing_button = Button(r"assets/Button/Button_Fish.png", (1000, 240))
 
     def play(self):

@@ -45,7 +45,7 @@ fishes = [
     },
     {
         'name': 'Orangeroughy ',
-        'image': 'assets/Fish/Fishes/Banana.PNG',
+        'image': 'assets/Fish/Fishes/Orangeroughy.PNG',
         'description': ' A saltwater fish found in deep, cool waters of the Atlantic, Pacific, and Indian Oceans. It is a commercially important fish with orange-rough skin and a large head.',
         'endangered': "Endangered"
     },
