@@ -101,7 +101,7 @@ class Game:
         self.path_mask = maskcollision(r"assets/Map/mask.png")
         self.buttons_on_screen = []
         self.fishing_mask = maskcollision(r"assets/Map/mask.png")
-        self.fishing_button = Button(r"assets/Button/Button_Fish.png", (1000, 240))
+        self.fishing_button = Button(r"assets/Button/Button_Fish.png", (660, 620))
 
     def play(self):
         while True:
@@ -149,7 +149,7 @@ class Game:
         # If there's a collision, display the fishing button
         if character_overlap:
             # Draw the fishing button on the screen
-            FISHING_BUTTON = Button(r"assets/Button/Button_Fish.png", (1000, 240))  # Adjust the path and position
+            FISHING_BUTTON = Button(r"assets/Button/Button_Fish.png", (660, 620))  # Adjust the path and position
             SCREEN.blit(FISHING_BUTTON.image, FISHING_BUTTON.rect)
 
         # Draw the character's and fishing mask on the screen for debugging
