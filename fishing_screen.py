@@ -77,9 +77,11 @@ def fishing_screen():
     textbox_font = pygame.font.Font(r"assets/Font/Daydream.ttf", 14)
     fishing_text = "Fishing"
     cooking_text = "Cooking"
+    feeding_text = "Feeding"
     dots = ""
     cooking_start_time = None
     cooking_duration = 3000  # Adjust the cooking animation duration (in milliseconds)
+    feeding_image_displayed = False
 
     fish_path = get_random_fish()
     fish_description = fish_path['description']
@@ -174,7 +176,17 @@ def fishing_screen():
                         dots = ""  # Reset dots after reaching three
             else:
                 cooking_start_time = None  # Stop cooking animation
+                feeding_image_displayed = True
+
+        # Display feeding image if cooking is completed
+        if feeding_image_displayed:
+            feeding_image = pygame.image.load(r"assets/Map/feeding_image.png")
+            SCREEN.blit(feeding_image, (0, 0))
+            draw_text(SCREEN, [f"{feeding_text}"], [font], [(255, 255, 255)],
+                      Rect(SCREEN_WIDTH // 2, SCREEN_HEIGHT // 2, 0, 0),
+                      "center")
 
         FISHING_BACK.update(SCREEN)
         pygame.display.update()
         clock.tick(3)
+
