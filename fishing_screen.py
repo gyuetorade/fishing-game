@@ -11,7 +11,7 @@ pygame.init()
 SCREEN_WIDTH = 1280
 SCREEN_HEIGHT = 720
 SCREEN = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
-pygame.display.set_caption("Fishing Screen")
+
 
 FISHING_BG = pygame.image.load(r"assets/Map/BackgroundFishing.png")  # Adjust the path
 TEXTBOX_IMAGE = pygame.image.load(r"assets/Others/textbox.png")  # Adjust the path
@@ -70,31 +70,6 @@ def draw_text(surface, texts, fonts, colors, rect, align="center", max_width=Non
 
     return total_height
 
-def cook_fish(fish_status):
-    while True:
-        for event in pygame.event.get():
-            if event.type == pygame.QUIT:
-                pygame.quit()
-                sys.exit()
-
-            if event.type == pygame.MOUSEBUTTONDOWN:
-                # Check if the mouse click is within the button's area
-                if FISHING_BACK.rect.collidepoint(event.pos):
-                    return
-
-        if fish_status:  # If endangered is True
-            # Display screen A with path jail.jpg
-            screen_a_image = pygame.image.load("assets/Map/Background.png")  # Adjust the path
-            SCREEN.blit(screen_a_image, (0, 0))  # Adjust the position
-        else:
-            # Display screen B with path feeding.jpg
-            screen_b_image = pygame.image.load("assets/Map/Kitchen.png")  # Adjust the path
-            SCREEN.blit(screen_b_image, (0, 0))  # Adjust the position
-
-        FISHING_BACK = Button(r"assets/Button/Button_Back.png", (50, 50))  # Adjust the path and position
-        FISHING_BACK.update(SCREEN)
-        pygame.display.update()
-
 
 def fishing_screen():
     clock = pygame.time.Clock()
@@ -104,11 +79,14 @@ def fishing_screen():
     dots = ""
     start_time = pygame.time.get_ticks()  # Record the start time
 
-    # Generate a random fish path and description outside the loop
     fish_path = get_random_fish()
     fish_description = fish_path['description']
     fish_name = fish_path['name']
     fish_status = fish_path['endangered']
+
+    fish_image = None
+    screen_a_image = None
+    screen_b_image = None
 
     while True:
         SCREEN.blit(FISHING_BG, (0, 0))
@@ -127,11 +105,12 @@ def fishing_screen():
             if len(dots) > 3:
                 dots = ""  # Reset dots after reaching three
         else:
-            fish_image = pygame.image.load(fish_path['image'])
-            fish_image = pygame.transform.scale(fish_image, (256, 256))
+            if fish_image is None:
+                fish_image = pygame.image.load(fish_path['image'])
+                fish_image = pygame.transform.scale(fish_image, (256, 256))
             fish_rect = fish_image.get_rect(center=(320, 250))  # Adjust position
-
             SCREEN.blit(fish_image, fish_rect)
+
             draw_text(SCREEN, ["Fish Caught"], [font], [(222, 180, 118)],
                       Rect(690, 75, 0, 0), "center")
 
@@ -149,29 +128,36 @@ def fishing_screen():
             draw_text(SCREEN, [fish_name_description], [textbox_font], [(255, 255, 255)], textbox_rect, "center",
                       max_width=520, max_height=500)
 
-
-
             # Update and draw the buttons
             catch.update(SCREEN)
             release.update(SCREEN)
 
-
+            if screen_a_image is not None:
+                SCREEN.blit(screen_a_image, (0, 0))
+            elif screen_b_image is not None:
+                SCREEN.blit(screen_b_image, (0, 0))
 
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 pygame.quit()
                 sys.exit()
             if event.type == pygame.MOUSEBUTTONDOWN:
-                if FISHING_BACK.checkForInput(FISHING_MOUSE_POS):
+                if FISHING_BACK.checkForInput(pygame.mouse.get_pos()):
                     return  # Return from the fishing_screen function to go back to the main menu
-                    # Check for button clicks
-
-                if release.checkForInput(FISHING_MOUSE_POS):
+                if release.checkForInput(pygame.mouse.get_pos()):
                     return
-                    # Add your function for button 2 here
-                if catch.checkForInput(FISHING_MOUSE_POS):
+                if catch.checkForInput(pygame.mouse.get_pos()):
                     print("Button 1 clicked!")
                     # Call the cook_fish function and pass fish_status as argument
-                    cook_fish(fish_status)
+                    if fish_status:  # If endangered is True
+                        # Display screen A
+                        screen_a_image = pygame.image.load("assets/Map/Jail.png")  # Adjust the path
+                        screen_b_image = None
+                    else:
+                        # Display screen B
+                        screen_b_image = pygame.image.load("assets/Map/Kitchen.png")  # Adjust the path
+                        screen_a_image = None
+
+        FISHING_BACK.update(SCREEN)
         pygame.display.update()
-        clock.tick(3)  # Adjust the frame rate
+        clock.tick(3)

@@ -96,11 +96,10 @@ def main_menu():
 class Game:
     def __init__(self):
         #character initial position
-        self.character = Character(character_images, (800, 420))
-
+        self.character = Character(character_images, (660, 220))
         self.path_mask = maskcollision(r"assets/Map/mask.png")
         self.buttons_on_screen = []
-        self.fishing_mask = maskcollision(r"assets/Map/mask.png")
+        self.fishing_mask = maskcollision(r"assets/Map/fishingmask.png")
         self.fishing_button = Button(r"assets/Button/Button_Fish.png", (660, 620))
 
     def play(self):
