@@ -77,6 +77,11 @@ def cook_fish(fish_status):
                 pygame.quit()
                 sys.exit()
 
+            if event.type == pygame.MOUSEBUTTONDOWN:
+                # Check if the mouse click is within the button's area
+                if FISHING_BACK.rect.collidepoint(event.pos):
+                    return
+
         if fish_status:  # If endangered is True
             # Display screen A with path jail.jpg
             screen_a_image = pygame.image.load("assets/Map/Background.png")  # Adjust the path
@@ -86,15 +91,9 @@ def cook_fish(fish_status):
             screen_b_image = pygame.image.load("assets/Map/Kitchen.png")  # Adjust the path
             SCREEN.blit(screen_b_image, (0, 0))  # Adjust the position
 
-        FISHING_BACK = Button(r"assets/Button/Button_Back.png", (100, 50))  # Adjust the path and position
+        FISHING_BACK = Button(r"assets/Button/Button_Back.png", (50, 50))  # Adjust the path and position
         FISHING_BACK.update(SCREEN)
         pygame.display.update()
-
-        # Check for button click
-        FISHING_MOUSE_POS = pygame.mouse.get_pos()
-        if FISHING_BACK.checkForInput(FISHING_MOUSE_POS):
-            FISHING_BACK.update(SCREEN)
-            return
 
 
 def fishing_screen():
