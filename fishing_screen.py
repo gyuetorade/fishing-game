@@ -91,7 +91,8 @@ def fishing_screen():
         FISHING_MOUSE_POS = pygame.mouse.get_pos()
         FISHING_BACK = Button(r"assets/Button/Button_Back.png", (50, 50))  # Adjust the path and position
         FISHING_BACK.update(SCREEN)
-
+        catch = Button(r"assets/Button/Button_Catch.png", (1100, 560))  # Adjust the  path and position
+        release = Button(r"assets/Button/Button_Release.png", (1100, 650))  # Adjust the path and position
         elapsed_time = pygame.time.get_ticks() - start_time
 
         if elapsed_time < 3000:  # Display "Fishing" for the first 3 seconds
@@ -124,21 +125,13 @@ def fishing_screen():
             draw_text(SCREEN, [fish_name_description], [textbox_font], [(255, 255, 255)], textbox_rect, "center",
                       max_width=520, max_height=500)
 
-            catch = Button(r"assets/Button/Button_Catch.png", (1100, 560))  # Adjust the  path and position
-            release = Button(r"assets/Button/Button_Release.png", (1100, 650))  # Adjust the path and position
+
 
             # Update and draw the buttons
             catch.update(SCREEN)
             release.update(SCREEN)
 
-            # Check for button clicks
-            if catch.checkForInput(FISHING_MOUSE_POS):
-                print("Button 1 clicked!")
-                # Add your function for button 1 here
 
-            if release.checkForInput(FISHING_MOUSE_POS):
-                print("Button 2 clicked!")
-                # Add your function for button 2 here
 
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
@@ -148,6 +141,13 @@ def fishing_screen():
                 if FISHING_BACK.checkForInput(FISHING_MOUSE_POS):
                     print("Back button clicked!")
                     return  # Return from the fishing_screen function to go back to the main menu
-
+                    # Check for button clicks
+                if catch.checkForInput(FISHING_MOUSE_POS):
+                    print("Button 1 clicked!")
+                    # Add your function for button 1 here
+                if release.checkForInput(FISHING_MOUSE_POS):
+                    print("Button 2 clicked!")
+                    return
+                    # Add your function for button 2 here
         pygame.display.update()
         clock.tick(3)  # Adjust the frame rate
