@@ -81,7 +81,9 @@ def fishing_screen():
     dots = ""
     cooking_start_time = None
     cooking_duration = 3000  # Adjust the cooking animation duration (in milliseconds)
-    feeding_image_displayed = False
+    feeding_start_time = None
+    feeding_duration = 3000  # Adjust the feeding animation duration (in milliseconds)
+    feeding_image_displayed = False  # Initialize feeding_image_displayed
 
     fish_path = get_random_fish()
     fish_description = fish_path['description']
@@ -176,17 +178,30 @@ def fishing_screen():
                         dots = ""  # Reset dots after reaching three
             else:
                 cooking_start_time = None  # Stop cooking animation
+                feeding_start_time = pygame.time.get_ticks()  # Start feeding animation timer
+
+        # Display feeding animation if feeding is ongoing
+        if feeding_start_time:
+            if elapsed_time - feeding_start_time < feeding_duration:
+                SCREEN.blit(screen_b_image, (0, 0))
+                draw_text(SCREEN, [f"{feeding_text}{dots}"], [font], [(255, 255, 255)],
+                          Rect(SCREEN_WIDTH // 2, SCREEN_HEIGHT // 2, 0, 0),
+                          "center")
+                dots += "."  # Add a dot to the animation
+                if len(dots) > 3:
+                    dots = ""  # Reset dots after reaching three
+            else:
+                feeding_start_time = None  # Stop feeding animation
                 feeding_image_displayed = True
 
-        # Display feeding image if cooking is completed
+        # Display "Thank you" after feeding animation is completed
         if feeding_image_displayed:
-            feeding_image = pygame.image.load(r"assets/Map/feeding_image.png")
-            SCREEN.blit(feeding_image, (0, 0))
-            draw_text(SCREEN, [f"{feeding_text}"], [font], [(255, 255, 255)],
-                      Rect(SCREEN_WIDTH // 2, SCREEN_HEIGHT // 2, 0, 0),
-                      "center")
+            draw_text(SCREEN, ["Thank you!"], [font], [(222, 180, 118)],
+                      Rect(690, 75, 0, 0), "center")
 
         FISHING_BACK.update(SCREEN)
         pygame.display.update()
         clock.tick(3)
+
+
 
