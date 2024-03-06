@@ -76,8 +76,10 @@ def fishing_screen():
     font = pygame.font.Font(r"assets/Font/Daydream.ttf", 76)  # Adjust the path and size
     textbox_font = pygame.font.Font(r"assets/Font/Daydream.ttf", 14)
     fishing_text = "Fishing"
+    cooking_text = "Cooking"
     dots = ""
-    start_time = pygame.time.get_ticks()  # Record the start time
+    cooking_start_time = None
+    cooking_duration = 3000  # Adjust the cooking animation duration (in milliseconds)
 
     fish_path = get_random_fish()
     fish_description = fish_path['description']
@@ -90,12 +92,12 @@ def fishing_screen():
 
     while True:
         SCREEN.blit(FISHING_BG, (0, 0))
-        FISHING_MOUSE_POS = pygame.mouse.get_pos()
         FISHING_BACK = Button(r"assets/Button/Button_Back.png", (50, 50))  # Adjust the path and position
         FISHING_BACK.update(SCREEN)
-        catch = Button(r"assets/Button/Button_Cook.png", (1100, 560))  # Adjust the  path and position
+        catch = Button(r"assets/Button/Button_Cook.png", (1100, 560))  # Adjust the path and position
         release = Button(r"assets/Button/Button_Release.png", (1100, 650))  # Adjust the path and position
-        elapsed_time = pygame.time.get_ticks() - start_time
+
+        elapsed_time = pygame.time.get_ticks()  # Record elapsed time
 
         if elapsed_time < 3000:  # Display "Fishing" for the first 3 seconds
             draw_text(SCREEN, [f"{fishing_text}{dots}"], [font], [(255, 255, 255)],
@@ -157,6 +159,21 @@ def fishing_screen():
                         # Display screen B
                         screen_b_image = pygame.image.load("assets/Map/Kitchen.png")  # Adjust the path
                         screen_a_image = None
+                        cooking_start_time = pygame.time.get_ticks()  # Start cooking animation timer
+
+        # Display cooking animation if cooking is ongoing
+        if cooking_start_time:
+            if elapsed_time - cooking_start_time < cooking_duration:
+                if screen_b_image is not None:
+                    SCREEN.blit(screen_b_image, (0, 0))
+                    draw_text(SCREEN, [f"{cooking_text}{dots}"], [font], [(255, 255, 255)],
+                              Rect(SCREEN_WIDTH // 2, SCREEN_HEIGHT // 2, 0, 0),
+                              "center")
+                    dots += "."  # Add a dot to the animation
+                    if len(dots) > 3:
+                        dots = ""  # Reset dots after reaching three
+            else:
+                cooking_start_time = None  # Stop cooking animation
 
         FISHING_BACK.update(SCREEN)
         pygame.display.update()
