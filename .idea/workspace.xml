@@ -1,0 +1,494 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="eaf3534e-6efb-462f-a26b-ca6138eb540a" name="Changes" comment="final just need music and cooking animation">
+      <change afterPath="$PROJECT_DIR$/assets/Map/KItchenG.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/Map/KitchenI.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/audio/251461__joshuaempyre__arcade-music-loop.wav" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/audio/Audio_Cook.mp3" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/audio/Audio_Jail.mp3" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/audio/Audio_Menu.mp3" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/audio/descsound.wav" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/audio/trollingck.mp3" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/audio/trollingck3.mp3" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/hs_err_pid4128.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Life Under the Sea.py" beforeDir="false" afterPath="$PROJECT_DIR$/Life Under the Sea.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/Map/Kitchen.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/fishing_screen.py" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Python Script" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="PREVIOUS_COMMIT_AUTHORS">
+      <list>
+        <option value="gyuetorade &lt;159615822+gyuetorade@users.noreply.github.com&gt;" />
+      </list>
+    </option>
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="main" />
+      </map>
+    </option>
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="ProjectErrors" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 4
+}</component>
+  <component name="ProjectId" id="2cjEBpVEjYwaFugZKneOF0c8V9R" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;ASKED_SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;Python.Life Under the Sea.executor&quot;: &quot;Run&quot;,
+    &quot;Python.a.executor&quot;: &quot;Run&quot;,
+    &quot;Python.fishies.executor&quot;: &quot;Run&quot;,
+    &quot;Python.fishing 2.executor&quot;: &quot;Run&quot;,
+    &quot;Python.fishing 3.executor&quot;: &quot;Run&quot;,
+    &quot;Python.fishing_screen.executor&quot;: &quot;Run&quot;,
+    &quot;Python.movement.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;merger&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/Flover/PycharmProjects/fishing-game/assets/Map&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;
+  }
+}</component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Flover\PycharmProjects\fishing-game\assets\Map" />
+      <recent name="C:\Users\Flover\PycharmProjects\fishing-game\assets\Others" />
+      <recent name="C:\Users\Flover\PycharmProjects\fishing-game\assets\Font" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Flover\PycharmProjects\fishing-game\assets\Map" />
+      <recent name="C:\Users\Flover\PycharmProjects\fishing-game\assets\FIsh\Fishes" />
+      <recent name="C:\Users\Flover\PycharmProjects\fishing-game\assets\Button" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Python.Life Under the Sea">
+    <configuration name="Life Under the Sea" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="fishing-game" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="C:\Users\Flover\PycharmProjects\fishing-game\Life Under the Sea.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="a" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="fishing-game" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/a.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Python.Life Under the Sea" />
+        <item itemvalue="Python.a" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-python-sdk-5a2391486177-d3b881c8e49f-com.jetbrains.pycharm.community.sharedIndexes.bundled-PC-233.13763.11" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="eaf3534e-6efb-462f-a26b-ca6138eb540a" name="Changes" comment="" />
+      <created>1708616455610</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1708616455610</updated>
+    </task>
+    <task id="LOCAL-00001" summary="font forgot">
+      <option name="closed" value="true" />
+      <created>1708616957916</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1708616957916</updated>
+    </task>
+    <task id="LOCAL-00002" summary="for a while">
+      <option name="closed" value="true" />
+      <created>1708617216646</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1708617216646</updated>
+    </task>
+    <task id="LOCAL-00003" summary="for a while">
+      <option name="closed" value="true" />
+      <created>1708617534004</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1708617534004</updated>
+    </task>
+    <task id="LOCAL-00004" summary="for a while">
+      <option name="closed" value="true" />
+      <created>1708793094547</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1708793094547</updated>
+    </task>
+    <task id="LOCAL-00005" summary="movement edits still not working">
+      <option name="closed" value="true" />
+      <created>1708842742750</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1708842742750</updated>
+    </task>
+    <task id="LOCAL-00006" summary="movement was useless afterall character all the way">
+      <option name="closed" value="true" />
+      <created>1708844852902</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1708844852902</updated>
+    </task>
+    <task id="LOCAL-00007" summary="movement was useless afterall character all the way">
+      <option name="closed" value="true" />
+      <created>1708844903302</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1708844903302</updated>
+    </task>
+    <task id="LOCAL-00008" summary="backup wroking">
+      <option name="closed" value="true" />
+      <created>1708858514835</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1708858514835</updated>
+    </task>
+    <task id="LOCAL-00009" summary="fishing button working">
+      <option name="closed" value="true" />
+      <created>1708861728623</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1708861728623</updated>
+    </task>
+    <task id="LOCAL-00010" summary="annoying code">
+      <option name="closed" value="true" />
+      <created>1708871224367</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1708871224367</updated>
+    </task>
+    <task id="LOCAL-00011" summary="fishing 3">
+      <option name="closed" value="true" />
+      <created>1708878714428</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1708878714428</updated>
+    </task>
+    <task id="LOCAL-00012" summary="fishing 3 works better than 2">
+      <option name="closed" value="true" />
+      <created>1708880962225</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1708880962225</updated>
+    </task>
+    <task id="LOCAL-00013" summary="fishing screen working">
+      <option name="closed" value="true" />
+      <created>1708881835396</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1708881835396</updated>
+    </task>
+    <task id="LOCAL-00014" summary="fishing bg and button works fishies nalang">
+      <option name="closed" value="true" />
+      <created>1708882920415</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1708882920415</updated>
+    </task>
+    <task id="LOCAL-00015" summary="fishie wheel">
+      <option name="closed" value="true" />
+      <created>1708884663077</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1708884663077</updated>
+    </task>
+    <task id="LOCAL-00016" summary="fishie wheel">
+      <option name="closed" value="true" />
+      <created>1708884741417</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1708884741417</updated>
+    </task>
+    <task id="LOCAL-00017" summary="fishie not wheel anymore">
+      <option name="closed" value="true" />
+      <created>1708885041050</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1708885041050</updated>
+    </task>
+    <task id="LOCAL-00018" summary="fishie not wheel anymore">
+      <option name="closed" value="true" />
+      <created>1708886291397</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1708886291397</updated>
+    </task>
+    <task id="LOCAL-00019" summary="fishie not wheel anymore">
+      <option name="closed" value="true" />
+      <created>1709011372833</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1709011372833</updated>
+    </task>
+    <task id="LOCAL-00020" summary="Add files via upload">
+      <option name="closed" value="true" />
+      <created>1709012948459</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1709012948459</updated>
+    </task>
+    <task id="LOCAL-00021" summary="upload btchass">
+      <option name="closed" value="true" />
+      <created>1709014441359</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1709014441359</updated>
+    </task>
+    <task id="LOCAL-00022" summary="upload btchass">
+      <option name="closed" value="true" />
+      <created>1709015896133</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1709015896133</updated>
+    </task>
+    <task id="LOCAL-00023" summary="update maybe sleep">
+      <option name="closed" value="true" />
+      <created>1709478807454</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1709478807454</updated>
+    </task>
+    <task id="LOCAL-00024" summary="update maybe sleepaaaa">
+      <option name="closed" value="true" />
+      <created>1709480789932</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1709480789932</updated>
+    </task>
+    <task id="LOCAL-00025" summary="update maybe sleepaaaa">
+      <option name="closed" value="true" />
+      <created>1709481095771</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1709481095771</updated>
+    </task>
+    <task id="LOCAL-00026" summary="update maybe sleepaaaa">
+      <option name="closed" value="true" />
+      <created>1709481111802</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1709481111802</updated>
+    </task>
+    <task id="LOCAL-00027" summary="update maybe sleepaaaa">
+      <option name="closed" value="true" />
+      <created>1709481555009</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1709481555009</updated>
+    </task>
+    <task id="LOCAL-00028" summary="i wanna sleep">
+      <option name="closed" value="true" />
+      <created>1709482175972</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1709482175972</updated>
+    </task>
+    <task id="LOCAL-00029" summary="i wanna sleep">
+      <option name="closed" value="true" />
+      <created>1709482392656</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1709482392656</updated>
+    </task>
+    <task id="LOCAL-00030" summary="i wanna sleep">
+      <option name="closed" value="true" />
+      <created>1709482460367</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1709482460367</updated>
+    </task>
+    <task id="LOCAL-00031" summary="i wanna sleep">
+      <option name="closed" value="true" />
+      <created>1709482549017</created>
+      <option name="number" value="00031" />
+      <option name="presentableId" value="LOCAL-00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1709482549017</updated>
+    </task>
+    <task id="LOCAL-00032" summary="i wanna sleep">
+      <option name="closed" value="true" />
+      <created>1709750484110</created>
+      <option name="number" value="00032" />
+      <option name="presentableId" value="LOCAL-00032" />
+      <option name="project" value="LOCAL" />
+      <updated>1709750484110</updated>
+    </task>
+    <task id="LOCAL-00033" summary="i wanna sleep">
+      <option name="closed" value="true" />
+      <created>1709754806820</created>
+      <option name="number" value="00033" />
+      <option name="presentableId" value="LOCAL-00033" />
+      <option name="project" value="LOCAL" />
+      <updated>1709754806820</updated>
+    </task>
+    <task id="LOCAL-00034" summary="i wanna sleep">
+      <option name="closed" value="true" />
+      <created>1709755052744</created>
+      <option name="number" value="00034" />
+      <option name="presentableId" value="LOCAL-00034" />
+      <option name="project" value="LOCAL" />
+      <updated>1709755052744</updated>
+    </task>
+    <task id="LOCAL-00035" summary="final just need music and cooking animation">
+      <option name="closed" value="true" />
+      <created>1710073786718</created>
+      <option name="number" value="00035" />
+      <option name="presentableId" value="LOCAL-00035" />
+      <option name="project" value="LOCAL" />
+      <updated>1710073786718</updated>
+    </task>
+    <task id="LOCAL-00036" summary="final just need music and cooking animation">
+      <option name="closed" value="true" />
+      <created>1710073810990</created>
+      <option name="number" value="00036" />
+      <option name="presentableId" value="LOCAL-00036" />
+      <option name="project" value="LOCAL" />
+      <updated>1710073810990</updated>
+    </task>
+    <task id="LOCAL-00037" summary="final just need music and cooking animation">
+      <option name="closed" value="true" />
+      <created>1710077225254</created>
+      <option name="number" value="00037" />
+      <option name="presentableId" value="LOCAL-00037" />
+      <option name="project" value="LOCAL" />
+      <updated>1710077225254</updated>
+    </task>
+    <option name="localTasksCounter" value="38" />
+    <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+    <MESSAGE value="font forgot" />
+    <MESSAGE value="for a while" />
+    <MESSAGE value="movement edits still not working" />
+    <MESSAGE value="movement was useless character all the way" />
+    <MESSAGE value="movement was useless afterall character all the way" />
+    <MESSAGE value="backup wroking" />
+    <MESSAGE value="fishing button working" />
+    <MESSAGE value="annoying code" />
+    <MESSAGE value="fishing 3" />
+    <MESSAGE value="fishing 3 works better than 2" />
+    <MESSAGE value="fishing screen working" />
+    <MESSAGE value="fishing bg and button works fishies nalang" />
+    <MESSAGE value="fishie wheel" />
+    <MESSAGE value="fishie not wheel anymore" />
+    <MESSAGE value="Add files via upload" />
+    <MESSAGE value="upload btchass" />
+    <MESSAGE value="update maybe sleep" />
+    <MESSAGE value="integrating ck changes" />
+    <MESSAGE value="update maybe sleepaaaa" />
+    <MESSAGE value="i wanna sleep" />
+    <MESSAGE value="final just need music and cooking animation" />
+    <option name="LAST_COMMIT_MESSAGE" value="final just need music and cooking animation" />
+  </component>
+</project>
