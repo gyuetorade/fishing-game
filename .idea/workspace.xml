@@ -4,20 +4,22 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="eaf3534e-6efb-462f-a26b-ca6138eb540a" name="Changes" comment="final just need music and cooking animation">
-      <change afterPath="$PROJECT_DIR$/assets/Map/KItchenG.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/Map/KitchenI.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/audio/251461__joshuaempyre__arcade-music-loop.wav" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/audio/Audio_Cook.mp3" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/audio/Audio_Jail.mp3" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/audio/Audio_Menu.mp3" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/audio/descsound.wav" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/audio/trollingck.mp3" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/audio/trollingck3.mp3" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hs_err_pid4128.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Life Under the Sea.py" beforeDir="false" afterPath="$PROJECT_DIR$/Life Under the Sea.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/Map/Kitchen.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/fishing_screen.py" beforeDir="false" />
+    <list default="true" id="eaf3534e-6efb-462f-a26b-ca6138eb540a" name="Changes" comment="done ill make exe now">
+      <change afterPath="$PROJECT_DIR$/LUS.exe" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/LUS.spec" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/LUS/Analysis-00.toc" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/LUS/EXE-00.toc" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/LUS/LUS.pkg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/LUS/PKG-00.toc" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/LUS/PYZ-00.pyz" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/LUS/PYZ-00.toc" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/LUS/base_library.zip" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/LUS/warn-LUS.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/LUS/xref-LUS.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/dist/LUS.exe" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/hs_err_pid6384.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Life Under the Sea.py" beforeDir="false" afterPath="$PROJECT_DIR$/LUS.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -88,8 +90,8 @@
       <recent name="C:\Users\Flover\PycharmProjects\fishing-game\assets\Button" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.Life Under the Sea">
-    <configuration name="Life Under the Sea" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="Python.LUS">
+    <configuration name="LUS" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="fishing-game" />
       <option name="ENV_FILES" value="" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -102,7 +104,7 @@
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="C:\Users\Flover\PycharmProjects\fishing-game\Life Under the Sea.py" />
+      <option name="SCRIPT_NAME" value="C:\Users\Flover\PycharmProjects\fishing-game\LUS.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -135,7 +137,7 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.Life Under the Sea" />
+        <item itemvalue="Python.LUS" />
         <item itemvalue="Python.a" />
       </list>
     </recent_temporary>
@@ -452,7 +454,55 @@
       <option name="project" value="LOCAL" />
       <updated>1710077225254</updated>
     </task>
-    <option name="localTasksCounter" value="38" />
+    <task id="LOCAL-00038" summary="just music">
+      <option name="closed" value="true" />
+      <created>1710094073340</created>
+      <option name="number" value="00038" />
+      <option name="presentableId" value="LOCAL-00038" />
+      <option name="project" value="LOCAL" />
+      <updated>1710094073340</updated>
+    </task>
+    <task id="LOCAL-00039" summary="just music">
+      <option name="closed" value="true" />
+      <created>1710094093721</created>
+      <option name="number" value="00039" />
+      <option name="presentableId" value="LOCAL-00039" />
+      <option name="project" value="LOCAL" />
+      <updated>1710094093721</updated>
+    </task>
+    <task id="LOCAL-00040" summary="just music">
+      <option name="closed" value="true" />
+      <created>1710097390681</created>
+      <option name="number" value="00040" />
+      <option name="presentableId" value="LOCAL-00040" />
+      <option name="project" value="LOCAL" />
+      <updated>1710097390681</updated>
+    </task>
+    <task id="LOCAL-00041" summary="just music">
+      <option name="closed" value="true" />
+      <created>1710097417617</created>
+      <option name="number" value="00041" />
+      <option name="presentableId" value="LOCAL-00041" />
+      <option name="project" value="LOCAL" />
+      <updated>1710097417617</updated>
+    </task>
+    <task id="LOCAL-00042" summary="done ill make exe now">
+      <option name="closed" value="true" />
+      <created>1710101279083</created>
+      <option name="number" value="00042" />
+      <option name="presentableId" value="LOCAL-00042" />
+      <option name="project" value="LOCAL" />
+      <updated>1710101279083</updated>
+    </task>
+    <task id="LOCAL-00043" summary="done ill make exe now">
+      <option name="closed" value="true" />
+      <created>1710101438693</created>
+      <option name="number" value="00043" />
+      <option name="presentableId" value="LOCAL-00043" />
+      <option name="project" value="LOCAL" />
+      <updated>1710101438693</updated>
+    </task>
+    <option name="localTasksCounter" value="44" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -489,6 +539,8 @@
     <MESSAGE value="update maybe sleepaaaa" />
     <MESSAGE value="i wanna sleep" />
     <MESSAGE value="final just need music and cooking animation" />
-    <option name="LAST_COMMIT_MESSAGE" value="final just need music and cooking animation" />
+    <MESSAGE value="just music" />
+    <MESSAGE value="done ill make exe now" />
+    <option name="LAST_COMMIT_MESSAGE" value="done ill make exe now" />
   </component>
 </project>
