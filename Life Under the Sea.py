@@ -12,7 +12,7 @@ pygame.init()
 SCREEN_WIDTH = 1280
 SCREEN_HEIGHT = 720
 SCREEN = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
-pygame.display.set_caption("Menu")
+pygame.display.set_caption("Life Under the Sea")
 
 # Load background images
 BG = pygame.image.load(r"assets\Map\Background Menu.png")
