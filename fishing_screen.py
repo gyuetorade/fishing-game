@@ -10,13 +10,10 @@ SCREEN_WIDTH = 1280
 SCREEN_HEIGHT = 720
 SCREEN = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
 
-
-FISHING_BG = pygame.image.load(r"assets/Map/BackgroundFishing.png")  # Adjust the path
-TEXTBOX_IMAGE = pygame.image.load(r"assets/Others/textbox.png")  # Adjust the path
-
+FISHING_BG = pygame.image.load(r"assets/Map/BackgroundFishing.png")
+TEXTBOX_IMAGE = pygame.image.load(r"assets/Others/textbox.png")
 
 def draw_text(surface, texts, fonts, colors, rect, align="center", max_width=None, max_height=None):
-    # Helper function to draw centered text on a surface with word wrapping
     global y
     lines = []
     current_line = []
@@ -51,33 +48,29 @@ def draw_text(surface, texts, fonts, colors, rect, align="center", max_width=Non
         y = rect.y
 
     for i, line in enumerate(lines):
-        text_surface = fonts[0].render(line, True, colors[0])  # Use fonts[0] and colors[0] for now
+        text_surface = fonts[0].render(line, True, colors[0])
         text_rect = text_surface.get_rect(centerx=rect.centerx, y=y)
 
-        # Create an outline surface
-        outline_surface = fonts[0].render(line, True, (0, 0, 0))  # Use fonts[0] for now
+        outline_surface = fonts[0].render(line, True, (0, 0, 0))
         outline_rect = outline_surface.get_rect(centerx=rect.centerx, y=y)
 
-        # Blit the outline surface multiple times to create the outline effect
         for offset in [(-1, 0), (1, 0), (0, -1), (0, 1)]:
             surface.blit(outline_surface, (outline_rect.x + offset[0], outline_rect.y + offset[1]))
 
-        # Blit the actual text surface
         surface.blit(text_surface, text_rect)
         y += current_line_height
 
     return total_height
 
-
 def fishing_screen():
     clock = pygame.time.Clock()
-    font = pygame.font.Font(r"assets/Font/Daydream.ttf", 76)  # Adjust the path and size
+    font = pygame.font.Font(r"assets/Font/Daydream.ttf", 76)
     textbox_font = pygame.font.Font(r"assets/Font/Daydream.ttf", 14)
     fishing_text = "Fishing"
     cooking_text = "Cooking"
     feeding_text = "Feeding"
     dots = ""
-    start_time = pygame.time.get_ticks()  # Record the start time
+    start_time = pygame.time.get_ticks()
 
     fish_path = get_random_fish()
     fish_description = fish_path['description']
@@ -92,49 +85,47 @@ def fishing_screen():
     feeding_start_time = None
     feeding_image_displayed = False
 
-    cooking_duration = 2000  # Adjust the cooking animation duration (in milliseconds)
-    feeding_duration = 1000  # Adjust the feeding animation duration (in milliseconds)
+    cooking_duration = 5000
+    feeding_duration = 3500
+
     while True:
         SCREEN.blit(FISHING_BG, (0, 0))
         FISHING_MOUSE_POS = pygame.mouse.get_pos()
-        FISHING_BACK = Button(r"assets/Button/Button_Back.png", (50, 50))  # Adjust the path and position
+        FISHING_BACK = Button(r"assets/Button/Button_Back.png", (50, 50))
         FISHING_BACK.update(SCREEN)
-        catch = Button(r"assets/Button/Button_Cook.png", (1100, 560))  # Adjust the  path and position
-        release = Button(r"assets/Button/Button_Release.png", (1100, 650))  # Adjust the path and position
+        catch = Button(r"assets/Button/Button_Cook.png", (1100, 560))
+        release = Button(r"assets/Button/Button_Release.png", (1100, 650))
+
         elapsed_time = pygame.time.get_ticks() - start_time
 
-        if elapsed_time < 3000:  # Display "Fishing" for the first 3 seconds
+        if elapsed_time < 3000:
             draw_text(SCREEN, [f"{fishing_text}{dots}"], [font], [(255, 255, 255)],
                       Rect(SCREEN_WIDTH // 2, SCREEN_HEIGHT // 2, 0, 0),
                       "center")
-            dots += "."  # Add a dot to the animation
+            dots += "."
             if len(dots) > 3:
-                dots = ""  # Reset dots after reaching three
+                dots = ""
         else:
             if fish_image is None:
                 fish_image = pygame.image.load(fish_path['image'])
                 fish_image = pygame.transform.scale(fish_image, (256, 256))
-            fish_rect = fish_image.get_rect(center=(320, 250))  # Adjust position
+            fish_rect = fish_image.get_rect(center=(320, 250))
             SCREEN.blit(fish_image, fish_rect)
 
             draw_text(SCREEN, ["Fish Caught"], [font], [(222, 180, 118)],
                       Rect(690, 75, 0, 0), "center")
 
-            # Display the text box image
             textbox_rect = TEXTBOX_IMAGE.get_rect(center=(320, 550))
             SCREEN.blit(TEXTBOX_IMAGE, textbox_rect)
 
-            # textbox content
             if fish_status:
                 fish_name_description = f"{fish_name}:{fish_description} Status: ENDANGERED!"
             else:
                 fish_name_description = f"{fish_name}:{fish_description}"
 
-            # Display the fish name and description inside the text box with word wrapping
             draw_text(SCREEN, [fish_name_description], [textbox_font], [(255, 255, 255)], textbox_rect, "center",
                       max_width=520, max_height=500)
 
-            # Update and draw the buttons
             catch.update(SCREEN)
             release.update(SCREEN)
 
@@ -149,55 +140,53 @@ def fishing_screen():
                 sys.exit()
             if event.type == pygame.MOUSEBUTTONDOWN:
                 if FISHING_BACK.checkForInput(pygame.mouse.get_pos()):
-                    return  # Return from the fishing_screen function to go back to the main menu
+                    # Reset cooking time when going back
+                    cooking_start_time = None
+                    return
                 if release.checkForInput(pygame.mouse.get_pos()):
                     return
                 if catch.checkForInput(pygame.mouse.get_pos()):
                     print("Button 1 clicked!")
-                    # Call the cook_fish function and pass fish_status as argument
-                    if fish_status:  # If endangered is True
-                        # Display screen A
-                        screen_a_image = pygame.image.load("assets/Map/Jail.png")  # Adjust the path
+                    if fish_status:
+                        screen_a_image = pygame.image.load("assets/Map/Jail.png")
                         screen_b_image = None
                     else:
-                        # Display screen B
-                        screen_b_image = pygame.image.load("assets/Map/Kitchen.png")  # Adjust the path
+                        screen_b_image = pygame.image.load("assets/Map/Kitchen.png")
                         screen_a_image = None
-                    cooking_start_time = pygame.time.get_ticks()  # Start cooking animation timer
+                    cooking_start_time = pygame.time.get_ticks()
 
-        # Display cooking animation if cooking is ongoing
         if cooking_start_time:
-            if elapsed_time - cooking_start_time < cooking_duration:
+            elapsed_cooking_time = pygame.time.get_ticks() - cooking_start_time  # Calculate elapsed time for cooking animation
+            if elapsed_cooking_time < cooking_duration:
                 if screen_b_image is not None:
                     SCREEN.blit(screen_b_image, (0, 0))
                     draw_text(SCREEN, [f"{cooking_text}{dots}"], [font], [(255, 255, 255)],
                               Rect(SCREEN_WIDTH // 2, SCREEN_HEIGHT // 2, 0, 0),
                               "center")
-                    dots += "."  # Add a dot to the animation
+                    dots += "."
                     if len(dots) > 3:
-                        dots = ""  # Reset dots after reaching three
+                        dots = ""
             else:
-                cooking_start_time = None  # Stop cooking animation
-                feeding_start_time = pygame.time.get_ticks()  # Start feeding animation timer
-
-        # Display feeding animation if feeding is ongoing
+                cooking_start_time = None
+                feeding_start_time = pygame.time.get_ticks()
         if feeding_start_time:
-            if elapsed_time - feeding_start_time < feeding_duration:
-                SCREEN.blit(screen_b_image, (0, 0))
+            food = pygame.image.load(r"assets/Map/BackgroundFood.png")
+            elapsed_feeding_time = pygame.time.get_ticks() - feeding_start_time  # Calculate elapsed time for feeding animation
+            if elapsed_feeding_time < feeding_duration:
+                SCREEN.blit(food, (0, 0))
                 draw_text(SCREEN, [f"{feeding_text}{dots}"], [font], [(255, 255, 255)],
-                          Rect(SCREEN_WIDTH // 2, SCREEN_HEIGHT // 2, 0, 0),
-                          "center")
-                dots += "."  # Add a dot to the animation
+                          Rect(SCREEN_WIDTH // 2, SCREEN_HEIGHT // 2, 0, 0),                          "center")
+                dots += "."
                 if len(dots) > 3:
-                    dots = ""  # Reset dots after reaching three
+                    dots = ""
             else:
-                feeding_start_time = None  # Stop feeding animation
+                feeding_start_time = None
                 feeding_image_displayed = True
 
-        # Display "Thank you" after feeding animation is completed
         if feeding_image_displayed:
+            SCREEN.blit(food, (0, 0))
             draw_text(SCREEN, ["Thank you!"], [font], [(222, 180, 118)],
-                      Rect(690, 75, 0, 0), "center")
+                      Rect(SCREEN_WIDTH // 2, SCREEN_HEIGHT // 2, 0, 0),"center")
 
         FISHING_BACK.update(SCREEN)
         pygame.display.update()
