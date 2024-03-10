@@ -304,7 +304,12 @@ def fishing_screen():
             SCREEN.blit(TEXTBOX_IMAGE, textbox_rect)
 
             if fish_status:
-                fish_name_description = f"{fish_name}:{fish_description} Status: ENDANGERED!"
+                if fish_path.get('poisonous'):
+                    fish_name_description = f"{fish_name}:{fish_description} POISONOUS!"
+                else:
+                    fish_name_description = f"{fish_name}:{fish_description} Status: ENDANGERED!"
+            elif fish_path.get('poisonous'):
+                fish_name_description = f"{fish_name}:{fish_description} POISONOUS!"
             else:
                 fish_name_description = f"{fish_name}:{fish_description}"
 
@@ -329,7 +334,6 @@ def fishing_screen():
                     Play.play()
                     gamesound.play(-1)
                     # Reset cooking time when going back
-                    cooking_start_time = None
                     return
                 if release.checkForInput(pygame.mouse.get_pos()):
                     buttonsfx.play()  # Play button click sound
@@ -338,9 +342,12 @@ def fishing_screen():
                 if catch.checkForInput(pygame.mouse.get_pos()):
                     buttonsfx.play()  # Play button click sound
                     if fish_status:
-                        screen_a_image = pygame.image.load("assets/Map/Jail.png")
-                        screen_b_image = None
-                        cookb.play()
+                        if fish_path.get('poisonous'):  # Check if the fish is poisonous
+                            bad.play()  # Play warning sound for poisonous fish
+                        else:
+                            screen_a_image = pygame.image.load("assets/Map/Jail.png")
+                            screen_b_image = None
+                            cookb.play()
                     else:
                         screen_b_image = pygame.image.load("assets/Map/KitchenI.png")
                         screen_a_image = None

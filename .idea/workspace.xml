@@ -5,11 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="eaf3534e-6efb-462f-a26b-ca6138eb540a" name="Changes" comment="just music">
-      <change afterPath="$PROJECT_DIR$/hs_err_pid2876.log" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hs_err_pid8488.log" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/FIsh/Fishes/Rabbit FIsh.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Life Under the Sea.py" beforeDir="false" afterPath="$PROJECT_DIR$/Life Under the Sea.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/audio/Audio_Cooking.mp3" beforeDir="false" afterPath="$PROJECT_DIR$/assets/audio/Audio_Cooking.mp3" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fishies.py" beforeDir="false" afterPath="$PROJECT_DIR$/fishies.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -460,7 +459,23 @@
       <option name="project" value="LOCAL" />
       <updated>1710094093721</updated>
     </task>
-    <option name="localTasksCounter" value="40" />
+    <task id="LOCAL-00040" summary="just music">
+      <option name="closed" value="true" />
+      <created>1710097390681</created>
+      <option name="number" value="00040" />
+      <option name="presentableId" value="LOCAL-00040" />
+      <option name="project" value="LOCAL" />
+      <updated>1710097390681</updated>
+    </task>
+    <task id="LOCAL-00041" summary="just music">
+      <option name="closed" value="true" />
+      <created>1710097417617</created>
+      <option name="number" value="00041" />
+      <option name="presentableId" value="LOCAL-00041" />
+      <option name="project" value="LOCAL" />
+      <updated>1710097417617</updated>
+    </task>
+    <option name="localTasksCounter" value="42" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
