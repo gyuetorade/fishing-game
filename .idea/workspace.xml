@@ -4,20 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="eaf3534e-6efb-462f-a26b-ca6138eb540a" name="Changes" comment="final just need music and cooking animation">
-      <change afterPath="$PROJECT_DIR$/assets/Map/KItchenG.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/Map/KitchenI.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/audio/251461__joshuaempyre__arcade-music-loop.wav" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/audio/Audio_Cook.mp3" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/audio/Audio_Jail.mp3" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/audio/Audio_Menu.mp3" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/audio/descsound.wav" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/audio/trollingck.mp3" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/audio/trollingck3.mp3" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hs_err_pid4128.log" afterDir="false" />
+    <list default="true" id="eaf3534e-6efb-462f-a26b-ca6138eb540a" name="Changes" comment="just music">
+      <change afterPath="$PROJECT_DIR$/hs_err_pid2876.log" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/hs_err_pid8488.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Life Under the Sea.py" beforeDir="false" afterPath="$PROJECT_DIR$/Life Under the Sea.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/Map/Kitchen.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/fishing_screen.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/audio/Audio_Cooking.mp3" beforeDir="false" afterPath="$PROJECT_DIR$/assets/audio/Audio_Cooking.mp3" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -452,7 +444,23 @@
       <option name="project" value="LOCAL" />
       <updated>1710077225254</updated>
     </task>
-    <option name="localTasksCounter" value="38" />
+    <task id="LOCAL-00038" summary="just music">
+      <option name="closed" value="true" />
+      <created>1710094073340</created>
+      <option name="number" value="00038" />
+      <option name="presentableId" value="LOCAL-00038" />
+      <option name="project" value="LOCAL" />
+      <updated>1710094073340</updated>
+    </task>
+    <task id="LOCAL-00039" summary="just music">
+      <option name="closed" value="true" />
+      <created>1710094093721</created>
+      <option name="number" value="00039" />
+      <option name="presentableId" value="LOCAL-00039" />
+      <option name="project" value="LOCAL" />
+      <updated>1710094093721</updated>
+    </task>
+    <option name="localTasksCounter" value="40" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -489,6 +497,7 @@
     <MESSAGE value="update maybe sleepaaaa" />
     <MESSAGE value="i wanna sleep" />
     <MESSAGE value="final just need music and cooking animation" />
-    <option name="LAST_COMMIT_MESSAGE" value="final just need music and cooking animation" />
+    <MESSAGE value="just music" />
+    <option name="LAST_COMMIT_MESSAGE" value="just music" />
   </component>
 </project>

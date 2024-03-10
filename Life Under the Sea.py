@@ -30,6 +30,7 @@ character_images = [
 
 # Initialize mixer and load main menu song
 pygame.mixer.init()
+reel = pygame.mixer.Sound(r"assets/audio/reel.mp3")
 gamesound = pygame.mixer.Sound(r"assets/audio/Audio_Game.mp3")
 main_menu_song = pygame.mixer.Sound(r"assets/audio/Audio_Menu.mp3")
 main_menu_song.set_volume(0.5)  # Set initial volume
@@ -154,6 +155,7 @@ class Game:
                     if self.fishing_button.checkForInput(PLAY_MOUSE_POS):
                         gamesound.stop()
                         Play.play()
+                        reel.play()
                         print("Fishing button clicked!")
                         fishing_screen()  # Switch to the fishing screen
 
@@ -241,6 +243,7 @@ def draw_text(surface, texts, fonts, colors, rect, align="center", max_width=Non
 
 
 def fishing_screen():
+    descsound.play()
     clock = pygame.time.Clock()
     font = pygame.font.Font(r"assets/Font/Daydream.ttf", 76)
     textbox_font = pygame.font.Font(r"assets/Font/Daydream.ttf", 14)
@@ -261,13 +264,13 @@ def fishing_screen():
 
     cooking_start_time = None
     feeding_start_time = None
-    feeding_image_displayed = False
 
+    feeding_image_displayed = False
+    cooka_sound_played = False
     cooking_duration = 5000
     feeding_duration = 3500
 
     while True:
-
         SCREEN.blit(FISHING_BG, (0, 0))
         FISHING_MOUSE_POS = pygame.mouse.get_pos()
         FISHING_BACK = Button(r"assets/Button/Button_Back.png", (50, 50))
@@ -286,7 +289,9 @@ def fishing_screen():
                 dots = ""
 
         else:
+            descsound.stop()
             if fish_image is None:
+                fishcaught.play()
                 fish_image = pygame.image.load(fish_path['image'])
                 fish_image = pygame.transform.scale(fish_image, (256, 256))
             fish_rect = fish_image.get_rect(center=(320, 250))
@@ -317,6 +322,7 @@ def fishing_screen():
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 pygame.quit()
+                Play.play()
                 sys.exit()
             if event.type == pygame.MOUSEBUTTONDOWN:
                 if FISHING_BACK.checkForInput(pygame.mouse.get_pos()):
@@ -339,7 +345,6 @@ def fishing_screen():
                         screen_b_image = pygame.image.load("assets/Map/KitchenI.png")
                         screen_a_image = None
                         cooking_start_time = pygame.time.get_ticks()
-                        cooka.play()
 
         if cooking_start_time:
             elapsed_cooking_time = pygame.time.get_ticks() - cooking_start_time
@@ -352,10 +357,11 @@ def fishing_screen():
                     dots += "."
                     if len(dots) > 3:
                         dots = ""
+                        cookingsound.play()
             else:
+                cookingsound.stop()
                 cooking_start_time = None
                 feeding_start_time = pygame.time.get_ticks()
-                cookingdonesound.play()  # Play cooking done sound effect
 
         if feeding_start_time:
             food = pygame.image.load(r"assets/Map/BackgroundFood.png")
@@ -363,7 +369,7 @@ def fishing_screen():
             if elapsed_feeding_time < feeding_duration:
                 SCREEN.blit(food, (0, 0))
                 draw_text(SCREEN, [f"{feeding_text}{dots}"], [font], [(255, 255, 255)],
-                          Rect(SCREEN_WIDTH // 2, SCREEN_HEIGHT // 2, 0, 0), "center")
+                          Rect(SCREEN_WIDTH // 2, SCREEN_HEIGHT // 4, 0, 0), "center")
                 dots += "."
                 if len(dots) > 3:
                     dots = ""
@@ -372,9 +378,12 @@ def fishing_screen():
                 feeding_image_displayed = True
 
         if feeding_image_displayed:
+            if not cooka_sound_played:
+                cooka.play()
+                cooka_sound_played = True
             SCREEN.blit(food, (0, 0))
             draw_text(SCREEN, ["Thank you!"], [font], [(222, 180, 118)],
-                      Rect(SCREEN_WIDTH // 2, SCREEN_HEIGHT // 2, 0, 0), "center")
+                      Rect(SCREEN_WIDTH // 2, SCREEN_HEIGHT // 4, 0, 0), "center")
 
         FISHING_BACK.update(SCREEN)
         pygame.display.update()
