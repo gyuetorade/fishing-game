@@ -42,7 +42,7 @@ cookingsound = pygame.mixer.Sound(r"assets/audio/Audio_Cooking.mp3")
 cooka = pygame.mixer.Sound(r"assets/audio/Audio_Cook.mp3")
 cookb = pygame.mixer.Sound(r"assets/audio/Audio_Jail.mp3")
 fishcaught = pygame.mixer.Sound(r"assets/audio/Audio_Fish.mp3")
-
+poisonous = pygame.mixer.Sound(r"assets/audio/poisonous.mp3")
 
 # Function to get font
 def get_font(size):
@@ -340,18 +340,22 @@ def fishing_screen():
                     gamesound.play(-1)
                     return
                 if catch.checkForInput(pygame.mouse.get_pos()):
-                    buttonsfx.play()  # Play button click sound
                     if fish_status:
                         if fish_path.get('poisonous'):  # Check if the fish is poisonous
-                            bad.play()  # Play warning sound for poisonous fish
+                            print("Fish is poisonous!")  # Check if this line is reached
+                            poisonous.play()  # Play warning sound for poisonous fish
+                            return  # Return without continuing with cooking
                         else:
+                            buttonsfx.play()
                             screen_a_image = pygame.image.load("assets/Map/Jail.png")
                             screen_b_image = None
                             cookb.play()
                     else:
-                        screen_b_image = pygame.image.load("assets/Map/KitchenI.png")
-                        screen_a_image = None
-                        cooking_start_time = pygame.time.get_ticks()
+                        if not fish_path.get('poisonous'):  # Check if the fish is not poisonous
+                            buttonsfx.play()
+                            screen_b_image = pygame.image.load("assets/Map/KitchenI.png")
+                            screen_a_image = None
+                            cooking_start_time = pygame.time.get_ticks()
 
         if cooking_start_time:
             elapsed_cooking_time = pygame.time.get_ticks() - cooking_start_time
@@ -395,6 +399,7 @@ def fishing_screen():
         FISHING_BACK.update(SCREEN)
         pygame.display.update()
         clock.tick(3)
+
 
 
 if __name__ == "__main__":

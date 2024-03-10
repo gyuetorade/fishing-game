@@ -5,10 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="eaf3534e-6efb-462f-a26b-ca6138eb540a" name="Changes" comment="just music">
-      <change afterPath="$PROJECT_DIR$/assets/FIsh/Fishes/Rabbit FIsh.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Life Under the Sea.py" beforeDir="false" afterPath="$PROJECT_DIR$/Life Under the Sea.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fishies.py" beforeDir="false" afterPath="$PROJECT_DIR$/fishies.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
