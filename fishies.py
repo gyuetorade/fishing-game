@@ -17,7 +17,7 @@ fishes = [
         'name': 'Box Jelly ',
         'image': 'assets/Fish/Fishes/BoxJelly.PNG',
         'description': ' A saltwater jellyfish found in the Indo-Pacific region, known for its box-shaped bell and venomous tentacles. It is a predator that floats in the water and stings its prey with its tentacles.',
-        'endangered': False
+        'endangered': False, 'poisonous' : True
     },
     {
         'name': 'Crab ',
@@ -41,7 +41,7 @@ fishes = [
         'name': 'Octopus ',
         'image': 'assets/FIsh/Fishes/Octopus.PNG',
         'description': ' A saltwater mollusk with eight long arms and no bones, found in oceans worldwide. They are intelligent creatures with good camouflage abilities and can squeeze through small openings.',
-        'endangered': True
+        'endangered': False
     },
     {
         'name': 'Orangeroughy ',
@@ -59,10 +59,10 @@ fishes = [
         'name': 'Seal',
         'image': 'assets/Fish/Fishes/Seal.PNG',
         'description': ' A semi-aquatic mammal found in cold and temperate waters around the world. They have streamlined bodies, flippers, and thick fur, and they spend a lot of time on land but return to water to hunt.',
-        'endangered': True
+        'endangered': False
     },
     {
-        'name': 'Shark',
+        'name': 'Great White Shark',
         'image': 'assets/Fish/Fishes/Shark.PNG',
         'description': ' A saltwater fish found in all oceans except the Arctic. They have a cartilaginous skeleton, sharp teeth, and powerful jaws. There are many different shark species, varying greatly in size and behavior.',
         'endangered': True
@@ -107,18 +107,12 @@ fishes = [
         'name': 'Turtle',
         'image': 'assets/Fish/Fishes/Turtle.png',
         'description': ' A reptile found in both saltwater and freshwater habitats around the world. They have a hard shell that protects them from predators, and they lay their eggs on land.',
-        'endangered': True
+        'endangered': False
     },
     {
         'name': 'Tuna',
         'image': 'assets/Fish/Fishes/Tuna.png',
         'description': ' A saltwater fish found in warm and temperate waters around the world. They are large, fast-swimming fish with streamlined bodies and are commercially important.',
-        'endangered': True
-    },
-    {
-        'name': 'Sea Lion',
-        'image': 'assets/Fish/Fishes/Sea_lion.PNG',
-        'description': ' A semi-aquatic mammal found in the cold waters of the Pacific and Atlantic Oceans. They are social animals with large flippers for swimming and spend time on land to rest and breed.',
         'endangered': False
     }
 ]
